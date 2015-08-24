@@ -30,7 +30,7 @@ block content
                         li
                             a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') View Data
                         li
-                            a(id='ManNoteSetBUTT', href='#inputTimes', data-theme='a', data-ajax='false') Input Times
+                            a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
                         li
                             a(id='ManNoteSetBUTT', href='#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
 
@@ -203,23 +203,15 @@ block content
                         label(for='bday') Date of Birth:
                         input#bday(type='date', name='bday')
                         label(for='practice') Practice site:
-                        input#practicesite(type='text', name='Psite')
+                        input#practicesite(type='text', name='practicesite')
                         button(ng-click='submitAthleteForm()', type='submit', data-inline='true', value='Submit') Create Account
 
                 #notes.ui-content
                     label(for='searchStudentsNoteInput') Search for a student by name:
                     input#searchStudentsNoteInput(type='search', name='searchStudentsNoteInput')
                     table#runTable.ui-body-d.ui-shadow.table-stripe.ui-responsive(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
-                    thead.ui-bar-d
-                        th.label(data-priority='2') Last Name
-                        th.label(data-priority='1') Score
-                        th.label(data-priority='4') Event
-                        th.label(data-priority='3') Date
                 | {{createRunTable()}}
-                //#profile.ui-content
-                //    div()
-                //        textarea#textarea(cols='40', rows='8', name='textarea')
-                //        button(ng-click='submitNoteForm()', type='submit', data-inline='true', value='Submit') Submit
+
                 #inputRun.ui-content
                     // Div to enter run data
                     h1 Input New Run
@@ -248,6 +240,7 @@ block content
                                 option(value='Carmello') Carmello
                                 option(value='other') Other
                                 // TODO if "other" is selected redirect to "create user" link
+
                         // Submit button
                         label Time:
                         input#time(type='number', name='time', placeholder='Decimal', ng-model='myDecimal', step='any')
