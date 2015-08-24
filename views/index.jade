@@ -13,7 +13,7 @@ block content
             br
             button(ng-click='logIn(user)') Log in
     div(ng-show='currentUser')
-        #pageone(data-role='page')
+        #page(data-role='page')
             div(data-role='header', id='customHeader')
                 h1 Welcome to Track-Houston!
             div(data-role='tabs')
@@ -21,57 +21,110 @@ block content
                     h1 Welcome {{currentUser.get('username')}}
                     p  You have been successfully logged in
                     button(ng-click='logOut(user)') Log out
-                div(data-role='navbar')
+                div(ng-hide='!isAdmin' data-role='navbar')
                     ul
                         li
-                            a(id='ManNoteSetBUTT', href='#season', data-theme='a', data-ajax='true') Enter Times
+                            a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') Home
                         li
-                            a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') View Students
+                            a(id='ManNoteSetBUTT', href='#inputTimes', data-theme='a', data-ajax='false') Input Times
                         li
-                            a(id='ManNoteSetBUTT', href='#roster', data-theme='a', data-ajax='false') Create Account
+                            a(id='ManNoteSetBUTT', href='#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
+                div(ng-hide='!isCoach' data-role='navbar')
+                    ul
+                        li
+                            a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') Home
+                        li
+                            a(id='ManNoteSetBUTT', href='#inputTimes', data-theme='a', data-ajax='false') Input Times
+                        li
+                            a(id='ManNoteSetBUTT', href='#coachUpdateRoster', data-theme='a', data-ajax='false') Update Roster
+                div(ng-hide='!isStudent' data-role='navbar')
+                    ul
+                        li
+                            a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') Home
+                        li
+                            a(id='ManNoteSetBUTT', href='#inputGrades', data-theme='a', data-ajax='false') Input Grades
+                        li
+                            a(id='ManNoteSetBUTT', href='#profile', data-theme='a', data-ajax='false') My Runs
+
                 // Form to enter roster data
-                #roster.ui-content
+                #adminCreateAccount.ui-content
                     //TODO make a checkbox to determine if user is a coach or not, if so then use angularJS to dynamically update form on the spot.
-                    form#coachForm(method='post')
-                        h1 Add to Roster
-                        // new user's full name
+                    div(ng-hide="isStudent", id='acctTypeRadios')
+                        input(id='studentType', type='radio', name='accountType', ng-click='newAcctTypeUpdate()',value='student')
+                        label(for='studentType') Student
+                        input(id='coachType', type='radio', name='accountType', value='coach',ng-click='newAcctTypeUpdate()')
+                        label(for='coachType') Coach
+                        input(id='adminType', ng-hide="isCoach",type='radio', name='accountType', value='admin', ng-click='newAcctTypeUpdate()')
+                        label(for='adminType') Admin
+                    form#coachForm(ng-show="newAcctType=='coach'", ng-hide="!isAdmin || newAcctType != 'coach'", method='post')
+                        h1 Create Coach Account
+                        // new user's first name
                         label(for='fname') First name:
-                        input#coachForm-fullname(type='text', name='fullname')
+                        input#coachForm-fname(type='text', name='fullname')
+
                         // new user's last name
                         label(for='lname') Last name:
                         input#coachForm-position(type='text', name='coachposition')
+
+                        // new user's email address
+                        label(for='hsite') Home Site:
+                        input#hsite(type='text', name='Hsite')
+                        label(for='email') Email:
+                        input#email(type='text', name='email')
+                        // submit button for coach input form
+                        button(ng-click='createCoach()', type='submit', data-inline='true', value='Submit') Create Coach
+                        |           {{createCoachSuccess}}
+                    form#adminForm(ng-show="newAcctType=='admin'", ng-hide="!isAdmin || newAcctType != 'admin'", method='post')
+                        h1 Create Admin Account
+                        // new user's first name
+                        label(for='fname') First name:
+                        input#adminForm-fname(type='text', name='fullname')
+
+                        // new user's last name
+                        label(for='lname') Last name:
+                        input#adminForm-position(type='text', name='coachposition')
+
                         // new user's email address
                         label(for='email') Email:
                         input#email(type='text', name='Hsite')
                         // submit button for coach input form
-                        button(ng-click='createCoach()', type='submit', data-inline='true', value='Submit') Create Coach
-                        |           {{createCoachSuccess}}
-                    form#athleteForm(method='post')
-                        h1 Athlete Inputs
-                        label(for='fullname') Full name:
-                        input#fullname(type='text', name='fullname')
-                        label(for='fullname') Parent's name:
+                        button(ng-click='createAdmin()', type='submit', data-inline='true', value='Submit') Create Admin
+                        |           {{createAdminSuccess}}
+                    form#athleteForm(ng-show="newAcctType=='student'",ng-hide="isStudent || newAcctType != 'student'", method='post')
+                        h1 Create Student Account
+                        label(for='fname') First name:
+                        input#fname(type='text', name='fname')
+                        lable(for='lname') Last name:
+                        input#lname(type='text', name='lname')
+                        label(for='parentsname') Parent's name:
                         input#parentsname(type='text', name='parentsname')
                         label(for='bday') Date of Birth:
                         input#bday(type='date', name='bday')
                         label(for='practice') Practice site:
                         input#practicesite(type='text', name='Psite')
-                        button(ng-click='submitAthleteForm()', type='submit', data-inline='true', value='Submit') Create Athlete
+                        button(ng-click='submitAthleteForm()', type='submit', data-inline='true', value='Submit') Create Account
                 #notes.ui-content
-                    h1 Create New Note
                     label(for='searchStudentsNoteInput') Search for a student by name:
                     input#searchStudentsNoteInput(type='search', name='searchStudentsNoteInput')
-                    div(data-role='fieldcontain')
-                        textarea#textarea(cols='40', rows='8', name='textarea')
-                    button(ng-click='submitNoteForm()', type='submit', data-inline='true', value='Submit') Submit
-                #season.ui-content
+                    table#runTable.ui-body-d.ui-shadow.table-stripe.ui-responsive(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
+                    thead.ui-bar-d
+                        th.label(data-priority='2') Last Name
+                        th.label(data-priority='1') Score
+                        th.label(data-priority='4') Event
+                        th.label(data-priority='3') Date
+                | {{createRunTable()}}
+                //#profile.ui-content
+                //    div()
+                //        textarea#textarea(cols='40', rows='8', name='textarea')
+                //        button(ng-click='submitNoteForm()', type='submit', data-inline='true', value='Submit') Submit
+                #inputRun.ui-content
                     // Div to enter run data
                     h1 Input New Run
                     form#runForm(method='post')
                         // start of runForm
                         // Date
                         label(for='date') Event Date:
-                        input#date(type='date', data-clear-btn='false', name='date', value='')
+                        input#datepicker1(type='date', data-clear-btn='false', name='date', val=(new Date()))
                         // Event
                         fieldset.ui-field-contain
                             label(for='event') Select Event
@@ -96,10 +149,3 @@ block content
                         label Time:
                         input#time(type='number', name='time', placeholder='Decimal', ng-model='myDecimal', step='any')
                         input(ng-click='submitRunForm()', type='submit', data-inline='true', value='Submit New Time')
-                table#runTable.ui-body-d.ui-shadow.table-stripe.ui-responsive(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
-                    thead.ui-bar-d
-                        th.label(data-priority='2') Last Name
-                        th.label(data-priority='1') Score
-                        th.label(data-priority='4') Event
-                        th.label(data-priority='3') Date
-                | {{createRunTable()}}

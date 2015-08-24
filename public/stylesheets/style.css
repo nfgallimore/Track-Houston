@@ -9,7 +9,8 @@ H1 {
 p, label {
   color:#f60;
   text-shadow: #3C3C63  1px 1px;
-  font-size:20px !Important;}
+  font-size: 20px
+}
 
 #customHeader {
   background:#3C3C63;
@@ -41,4 +42,18 @@ input {
   -webkit-border-radius: 0px !important;
   border-radius: 0px !important;}
 
+#radio-ui {
+  display: inline
+}
+
+#radio {
+  display: inline
+}
+
+.label {
+  display: inline
+}
+
+.input {
+  display: inline
 }

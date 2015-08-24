@@ -6,6 +6,10 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
     $scope.scenario = 'Log in';
     $scope.currentUser = Parse.User.current();
     $scope.createCoachSuccess = null;
+    $scope.newAcctType = null;
+    $scope.isAdmin = false;
+    $scope.isCoach = false;
+    $scope.isStudent = false;
     $scope.createAccount = function (form) {
         var user = new Parse.User();
         user.set("email", form.email);
@@ -25,6 +29,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
         Parse.User.logIn(form.username, form.password, {
             success: function (user) {
                 $scope.currentUser = user;
+                $scope.updateType();
                 $scope.$apply();
             },
             error: function (user, error) {
@@ -35,6 +40,9 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
     $scope.logOut = function (form) {
         Parse.User.logOut();
         $scope.currentUser = null;
+        $scope.isAdmin = false;
+        $scope.isCoach = false;
+        $scope.isStudent = false;
     };
 
     $scope.submitRunForm = function () {
@@ -73,12 +81,14 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
         var Coach = Parse.Object.extend("Coach");
         var coach = new Coach();
         coach.set("name", $("#coachForm-fullname").val());
+        coach.set("email", $("#coachForm-email").val());
         coach.set("position", $("#coachForm-position").val());
         coach.set("homesite", $("#coachForm-homesite").val());
         coach.save(null, {
             success: function (run) {
                 run.save();
                 $scope.createCoachSuccess = 'Coach successfully created!';
+                $scope.newAccountType = null;
                 console.log("Good news boss, I Successfully ran the function createCoach()!");
                 $scope.$apply();
             }
@@ -119,5 +129,31 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
                 alert("Error: " + error.code + " " + error.message);
             }
         });
-    }
+    };
+    $scope.updateType = function () {
+        if ($scope.currentUser != null) {
+            if ($scope.currentUser.attributes.type === "student") {
+                $scope.isStudent = true;
+            }
+            else if ($scope.currentUser.attributes.type === "coach") {
+                $scope.isCoach = true;
+            }
+            else if ($scope.currentUser.attributes.type == "admin") {
+                $scope.isAdmin = true;
+            }
+        }
+    };
+    $scope.updateType();
+    $scope.newAcctTypeUpdate = function () {
+        if ($(studentType)[0].checked) {
+            $scope.newAcctType = "student";
+        }
+        if ($(coachType)[0].checked) {
+            $scope.newAcctType = "coach";
+        }
+        if ($(adminType)[0].checked) {
+            $scope.newAcctType = "admin";
+        }
+    };
+    $scope.newAcctTypeUpdate();
 }]);
