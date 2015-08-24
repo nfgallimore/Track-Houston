@@ -50,7 +50,7 @@ block content
                         li
                             a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') View Data
                         li
-                            a(id='ManNoteSetBUTT', href='#inputGrades', data-theme='a', data-ajax='false') Input Grades
+                            a(id='ManNoteSetBUTT', href='#studentGradeInput', data-theme='a', data-ajax='false') Input Grades
                         li
                             a(id='ManNoteSetBUTT', href='#profile', data-theme='a', data-ajax='false') My Runs
 
@@ -205,6 +205,57 @@ block content
                         label(for='practice') Practice site:
                         input#practicesite(type='text', name='practicesite')
                         button(ng-click='submitAthleteForm()', type='submit', data-inline='true', value='Submit') Create Account
+                #studentProfile.ui-content
+                    // profile picture
+                    // grades
+
+                #studentGradeInput.ui-content
+                    form#studentGradeInputForm(method='post')
+                        h1 Create Student Account
+                        label(for='class1') What is the name of your first class?
+                        input#class1(type='text', name='class1')
+
+                        label(for='grade1') What is your current grade in {{class1}}?
+                        input#grade1(type='text', name='grade1')
+
+                        label(for='like1') Do you like it?
+                        input#like1(type='text', name='like1')
+
+                        h1 Create Student Account
+                        label(for='class2') What is the name of your second class?
+                        input#class2(type='text', name='class2')
+                        label(for='grade2') What is your current grade in {{class2}}?
+                        input#grade2(type='text', name='grade2')
+                        label(for='like') Do you like it?
+                        input#like1(type='text', name='like2')
+
+                        h1 Study Buddy for Class Three
+                        label(for='class3') What is the name of your third class?
+                        input#class1(type='text', name='class3')
+                        label(for='grade3') What is your current grade in {{class3}}?
+                        input#grade1(type='text', name='grade3')
+                        label(for='like3') Do you like it?
+                        input#like1(type='text', name='like3')
+
+
+                        h1 Study Buddy for Class Four
+                        label(for='class4') What is the name of your fourth class?
+                        input#class1(type='text', name='class1')
+                        label(for='grade4') What is your current grade in {{class4}}?
+                        input#grade1(type='text', name='grade4')
+                        label(for='like4') Do you like it?
+                        input#like1(type='text', name='like4')
+
+
+                        h1 Study Buddy for Class Five
+                        label(for='class5') What is the name of your fifth class?
+                        input#class5(type='text', name='class5')
+                        label(for='grade5') What is your current grade in {{class5}}?
+                        input#grade1(type='text', name='grade5')
+                        label(for='like5') Do you like it?
+                        input#like1(type='text', name='like5')
+
+                        button(ng-click='submitGradeInputForm()', type='submit', data-inline='true', value='Submit') Enter Grades
 
                 #notes.ui-content
                     label(for='searchStudentsNoteInput') Search for a student by name:
