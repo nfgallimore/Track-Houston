@@ -24,9 +24,9 @@ block content
         div(data-role='navbar')
           ul
             li
-              a(id='ManNoteSetBUTT', href='#season', data-theme='a', data-ajax='true') Manage Time(s)
+              a(id='ManNoteSetBUTT', href='#season', data-theme='a', data-ajax='true') Enter Times
             li
-              a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') Notes
+              a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') View Students
             li
               a(id='ManNoteSetBUTT', href='#roster', data-theme='a', data-ajax='false') Settings
         // Form to enter roster data
@@ -101,9 +101,4 @@ block content
             th.label(data-priority='1') Score
             th.label(data-priority='4') Event
             th.label(data-priority='3') Date
-        |         {{createRunTable()}}
-        script.
-          $(".selector").table - columntoggle("refresh");
-        // settings div
-        #settings.ui-content
-      // end of main content
+        | {{createRunTable()}}

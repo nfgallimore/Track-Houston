@@ -1,16 +1,16 @@
 doctype html
-html
+html(ng-app='track-houston')
     head
         meta(name='robots' content='noindex')
         meta(charset='utf-8')
         meta(name='description' content='Track Times')
         meta(name='viewport' content='width=device-width, initial-scale=1')
-        link(rel='stylesheet' href='http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css')
+        link(rel='stylesheet' href='/stylesheets/jquery.mobile-1.4.5.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
-        script(type='application/javascript' src='http://www.parsecdn.com/js/parse-1.5.0.min.js')
-        script(type='application/javascript' src='http://code.jquery.com/jquery-1.11.3.min.js')
-        script(type='application/javascript' src='http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js')
-        script(type='application/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js')
-        script(type='application/javascript' src='javascripts/track-houston.js')
-    body(ng-app='track-houston')
-    block content
+        script(src='/javascripts/parse-1.5.0.min.js')
+        script(src='/javascripts/jquery-1.11.3.min.js')
+        script(src='/javascripts/jquery.mobile-1.4.5.min.js')
+        script(src='/javascripts/angular.min.js')
+        script(src='/javascripts/track-houston.js', id="jsbin-javascript")
+    body
+        block content
