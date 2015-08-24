@@ -210,9 +210,9 @@ block content
                     // profile picture
                     // grades
 
-                #studentGradeInput.ui-content
+                div(ng-hide="!isStudent", id ='studentGradeInput.ui-content')
                     form#studentGradeInputForm(method='post')
-                        h1 Study Buddy for Class One
+                        h1 Study Buddy for Class 1
                         label(for='class1') What is the name of your first class?
                         input#class1(type='text', name='class1')
 
@@ -222,7 +222,7 @@ block content
                         label(for='like1') Do you like it?
                         input#like1(type='text', name='like1')
 
-                        h1 Study Buddy for Class Two
+                        h1 Study Buddy for Class 2
                         label(for='class2') What is the name of your second class?
                         input#class2(type='text', name='class2')
                         label(for='grade2') What is your current grade in {{class2}}?
@@ -230,7 +230,7 @@ block content
                         label(for='like') Do you like it?
                         input#like1(type='text', name='like2')
 
-                        h1 Study Buddy for Class Three
+                        h1 Study Buddy for Class 3
                         label(for='class3') What is the name of your third class?
                         input#class1(type='text', name='class3')
                         label(for='grade3') What is your current grade in {{class3}}?
@@ -239,7 +239,7 @@ block content
                         input#like1(type='text', name='like3')
 
 
-                        h1 Study Buddy for Class Four
+                        h1 Study Buddy for Class 4
                         label(for='class4') What is the name of your fourth class?
                         input#class1(type='text', name='class1')
                         label(for='grade4') What is your current grade in {{class4}}?
@@ -248,7 +248,7 @@ block content
                         input#like1(type='text', name='like4')
 
 
-                        h1 Study Buddy for Class Five
+                        h1 Study Buddy for Class 5
                         label(for='class5') What is the name of your fifth class?
                         input#class5(type='text', name='class5')
                         label(for='grade5') What is your current grade in {{class5}}?
