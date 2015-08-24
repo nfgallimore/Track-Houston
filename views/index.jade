@@ -5,12 +5,10 @@ block content
   div(ng-hide='currentUser')
     form(ng-show="scenario == 'Log in'")
       h2 Log in
-      // TODO make these into labels for each input
-      | Username:
-      input(colspan='0', type='text', ng-model='user.username')
+      input(type='text', value="Username")
       br
-      |     Password:
-      input(colspan='1', type='password', ng-model='user.password')
+      input(type='password', ng-model='user.password', value='Password')
+      br
       br
       button(ng-click='logIn(user)') Log in
   div(ng-show='currentUser')
