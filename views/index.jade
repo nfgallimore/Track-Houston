@@ -19,10 +19,6 @@ block content
                 h1 Welcome to Track-Houston!
             div(data-role='tabs')
                 #one.ui-content
-                    h1 Welcome {{currentUser.get('username')}}
-                    p  You have been successfully logged in
-                    button(ng-click='logOut(user)') Log out
-
                 // admin navigation bar
                 div(ng-hide='!isAdmin' data-role='navbar')
                     ul
@@ -52,6 +48,8 @@ block content
                             a(id='ManNoteSetBUTT', href='#studentGradeInput', data-theme='a', data-ajax='false') Input Grades
                         li
                             a(id='ManNoteSetBUTT', href='#profile', data-theme='a', data-ajax='false') My Runs
+
+                button(ng-click='logOut(user)') Log out
 
                 // form for admin to create new accounts
                 #adminCreateAccount.ui-content
