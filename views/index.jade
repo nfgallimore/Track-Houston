@@ -1,6 +1,5 @@
 extends layout
 block content
-
     // shown when user is not logged in
     div(ng-hide='currentUser')
         form(ng-show="scenario == 'Log in'")
@@ -210,7 +209,7 @@ block content
                     // profile picture
                     // grades
 
-                div(ng-hide="!isStudent", id ='studentGradeInput.ui-content')
+                div(ng-hide="!isStudent", id ='studentGradeInput').ui-content
                     form#studentGradeInputForm(method='post')
                         h1 Study Buddy for Class 1
                         label(for='class1') What is the name of your first class?
