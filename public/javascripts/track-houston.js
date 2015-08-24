@@ -104,7 +104,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
                     (function ($) {
-                        $('#runTable').append('<tr><td>' + object.get('name') + '</td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
+                        $('#runTable').append('<tr><td>' + object.get('lname') + '</td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
                     })(jQuery);
                 }
             },

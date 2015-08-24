@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
   query.find({
     success: function(users) {
       for (var i = 0; i < users.length; ++i) {
-        console.log(users[i].get('username'));
+          console.log(users[i].get('lname'));
+          console.log(users[i].get('id'));
       }
       res.send(users);
     }
