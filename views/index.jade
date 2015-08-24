@@ -19,7 +19,7 @@ block content
       button(ng-click='logIn(user)') Log in
   div(ng-show='currentUser')
     #pageone(data-role='page')
-      div(data-role='header')
+      div(data-role='header', id='customHeader')
         h1 Welcome to Track-Houston!
       div(data-role='tabs')
         #one.ui-content
@@ -29,11 +29,11 @@ block content
         div(data-role='navbar')
           ul
             li
-              a(href='#season', data-theme='a', data-ajax='true') Manage Time(s)
+              a(id='ManNoteSetBUTT', href='#season', data-theme='a', data-ajax='true') Manage Time(s)
             li
-              a(href='#notes', data-theme='a', data-ajax='false') Notes
+              a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') Notes
             li
-              a(href='#roster', data-theme='a', data-ajax='false') Settings
+              a(id='ManNoteSetBUTT', href='#roster', data-theme='a', data-ajax='false') Settings
         // Form to enter roster data
         #roster.ui-content
           form#coachForm(method='post')
