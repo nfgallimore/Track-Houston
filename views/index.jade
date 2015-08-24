@@ -1,7 +1,7 @@
 extends layout
-
 block content
-    // this is only shown when currentUser is unknown (aka the variable currentUser == nil )
+
+    // shown when user is not logged in
     div(ng-hide='currentUser')
         form(ng-show="scenario == 'Log in'")
             h2 Log in
@@ -12,6 +12,8 @@ block content
             input(type='password', ng-model='user.password')
             br
             button(ng-click='logIn(user)') Log in
+
+    // shown when user is logged in
     div(ng-show='currentUser')
         #page(data-role='page')
             div(data-role='header', id='customHeader')
@@ -21,6 +23,8 @@ block content
                     h1 Welcome {{currentUser.get('username')}}
                     p  You have been successfully logged in
                     button(ng-click='logOut(user)') Log out
+
+                // admin navigation bar
                 div(ng-hide='!isAdmin' data-role='navbar')
                     ul
                         li
@@ -29,6 +33,8 @@ block content
                             a(id='ManNoteSetBUTT', href='#inputTimes', data-theme='a', data-ajax='false') Input Times
                         li
                             a(id='ManNoteSetBUTT', href='#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
+
+                // coach navigation bar
                 div(ng-hide='!isCoach' data-role='navbar')
                     ul
                         li
@@ -37,6 +43,8 @@ block content
                             a(id='ManNoteSetBUTT', href='#inputTimes', data-theme='a', data-ajax='false') Input Times
                         li
                             a(id='ManNoteSetBUTT', href='#coachUpdateRoster', data-theme='a', data-ajax='false') Update Roster
+
+                // student navigation bar
                 div(ng-hide='!isStudent' data-role='navbar')
                     ul
                         li
@@ -46,51 +54,113 @@ block content
                         li
                             a(id='ManNoteSetBUTT', href='#profile', data-theme='a', data-ajax='false') My Runs
 
-                // Form to enter roster data
+                // form for admin to create new accounts
                 #adminCreateAccount.ui-content
-                    //TODO make a checkbox to determine if user is a coach or not, if so then use angularJS to dynamically update form on the spot.
-                    div(ng-hide="isStudent", id='acctTypeRadios')
+                    div(ng-hide="!isAdmin", id='acctTypeRadios')
+
+                        // student radio button
                         input(id='studentType', type='radio', name='accountType', ng-click='newAcctTypeUpdate()',value='student')
                         label(for='studentType') Student
+
+                        // coach radio button
                         input(id='coachType', type='radio', name='accountType', value='coach',ng-click='newAcctTypeUpdate()')
                         label(for='coachType') Coach
-                        input(id='adminType', ng-hide="isCoach",type='radio', name='accountType', value='admin', ng-click='newAcctTypeUpdate()')
+
+                        // admin radio button
+                        input(id='adminType', type='radio', name='accountType', value='admin', ng-click='newAcctTypeUpdate()')
                         label(for='adminType') Admin
-                    form#coachForm(ng-show="newAcctType=='coach'", ng-hide="!isAdmin || newAcctType != 'coach'", method='post')
+
+                    // form to create a new coach
+                    form#coachForm(ng-hide="!isAdmin || newAcctType != 'coach'", method='post')
+
+                        // create coach form header
                         h1 Create Coach Account
-                        // new user's first name
-                        label(for='fname') First name:
-                        input#coachForm-fname(type='text', name='fullname')
 
-                        // new user's last name
-                        label(for='lname') Last name:
-                        input#coachForm-position(type='text', name='coachposition')
+                        // new coach's first name
+                        label(for='coachForm-fname') First name:
+                        input#coachForm-fname(type='text', name='coachForm-fname')
 
-                        // new user's email address
-                        label(for='hsite') Home Site:
-                        input#hsite(type='text', name='Hsite')
-                        label(for='email') Email:
-                        input#email(type='text', name='email')
+                        // new coach's last name
+                        label(for='coachForm-lname') Last name:
+                        input#coachForm-lname(type='text', name='coachForm-lname')
+
+                        // new coach's position
+                        label(for='coachForm-position') Position:
+                        input#coachForm-position(type='text', name='coachForm-position')
+
+                        // new coach's home site
+                        label(for='coachForm-hsite') Home Site:
+                        input#coachForm-hsite(type='text', name='coachForm-hsite')
+
+                        // new coach's email
+                        label(for='coachForm-email') Email:
+                        input#coachForm-email(type='text', name='coachForm-email')
+
                         // submit button for coach input form
                         button(ng-click='createCoach()', type='submit', data-inline='true', value='Submit') Create Coach
-                        |           {{createCoachSuccess}}
+
+                        // success-message upon successful creation
+                        | {{createCoachSuccess}}
+
+                    // form to create a new admin
                     form#adminForm(ng-show="newAcctType=='admin'", ng-hide="!isAdmin || newAcctType != 'admin'", method='post')
+
+                        // create admin form header
                         h1 Create Admin Account
-                        // new user's first name
+
+                        // new admin's first name
                         label(for='fname') First name:
-                        input#adminForm-fname(type='text', name='fullname')
+                        input#adminForm-fname(type='text', name='adminForm-fname')
 
-                        // new user's last name
+                        // new admin's last name
                         label(for='lname') Last name:
-                        input#adminForm-position(type='text', name='coachposition')
+                        input#adminForm-lname(type='text', name='adminForm-lname')
 
-                        // new user's email address
+                        // new admin's email address
                         label(for='email') Email:
-                        input#email(type='text', name='Hsite')
+                        input#adminForm-email(type='text', name='adminForm-email')
+
                         // submit button for coach input form
                         button(ng-click='createAdmin()', type='submit', data-inline='true', value='Submit') Create Admin
-                        |           {{createAdminSuccess}}
-                    form#athleteForm(ng-show="newAcctType=='student'",ng-hide="isStudent || newAcctType != 'student'", method='post')
+
+                        // success-message upon successful creation
+                        | {{createAdminSuccess}}
+
+                    // form to create a new student
+                    form#studentForm(ng-show="newAcctType=='student'", ng-hide="!isStudent", method='post')
+
+                        // create student form header
+                        h1 Create Student Account
+
+                        // new student's first name
+                        label(for='studentForm-fname') First name:
+                        input#studenForm-fname(type='text', name='studentForm-fname')
+
+                        // new student's last name
+                        label(for='studentForm-lname') Last name:
+                        input#studentForm-lname(type='text', name='studentForm-lname')
+
+                        // new student's parent's name
+                        label(for='studentForm-parentsname') Parent's full name:
+                        input#studentForm-parentsName(type='text', name='studentForm-parentsName')
+
+                        // new student's birth year
+                        label(for='studentForm-birthYear') Birth year:
+                        input#studentForm-birthYear(type='studentForm-birthYear', name='studentForm-birthYear')
+
+                        // new student's practice site
+                        label(for='studentForm-practiceSite') Practice site:
+                        input#studentForm-practiceSite(type='text', name='studentForm-practiceSite')
+
+                        // submit button for student input form
+                        button(ng-click='submitStudentForm()', type='submit', data-inline='true', value='Submit') Create Account
+
+                        // success-message upon successful creation
+                        | {{createStudentSuccess}}
+
+                #coachUpdateRoster(ng-hide="!isCoach").ui-content
+                    //TODO make a checkbox to determine if user is a coach or not, if so then use angularJS to dynamically update form on the spot.
+                    form#athleteForm(method='post')
                         h1 Create Student Account
                         label(for='fname') First name:
                         input#fname(type='text', name='fname')
@@ -103,6 +173,7 @@ block content
                         label(for='practice') Practice site:
                         input#practicesite(type='text', name='Psite')
                         button(ng-click='submitAthleteForm()', type='submit', data-inline='true', value='Submit') Create Account
+
                 #notes.ui-content
                     label(for='searchStudentsNoteInput') Search for a student by name:
                     input#searchStudentsNoteInput(type='search', name='searchStudentsNoteInput')
