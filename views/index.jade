@@ -5,10 +5,11 @@ block content
   div(ng-hide='currentUser')
     form(ng-show="scenario == 'Log in'")
       h2 Log in
-      input(type='text', value="Username")
+      | Username:
+      input(type='text', ng-model='user.username')
       br
-      input(type='password', ng-model='user.password', value='Password')
-      br
+      | Password:
+      input(type='password', ng-model='user.password')
       br
       button(ng-click='logIn(user)') Log in
   div(ng-show='currentUser')
