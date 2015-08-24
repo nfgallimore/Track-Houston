@@ -1,7 +1,6 @@
 /**
  * Created by nickgallimore on 8/24/15.
  */
-Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
 angular.module('track-houston', []).run(['$rootScope', function ($scope) {
     $scope.scenario = 'Log in';
     $scope.currentUser = Parse.User.current();
