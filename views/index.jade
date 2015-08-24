@@ -1,6 +1,11 @@
 extends layout
 
 block content
+  script(type='text/javascript' src='http://www.parsecdn.com/js/parse-1.5.0.min.js')
+  script(type='text/javascript' src='http://code.jquery.com/jquery-1.11.3.min.js')
+  script(type='text/javascript' src='http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js')
+  script(type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js')
+  script(type='text/javascript' src='http://virtualtheologies.com/ftp/track-houston.js')
   // this is only shown when currentUser is unknown (aka the variable currentUser == nil )
   div(ng-hide='currentUser')
     form(ng-show="scenario == 'Log in'")

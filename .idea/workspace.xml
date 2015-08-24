@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f218f1ec-9d71-4bfe-a242-a8922d32825c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="track-houston.iws" />
@@ -25,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="index.jade" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5833333">
-              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.2734375">
+              <caret line="7" column="88" selection-start-line="7" selection-start-column="88" selection-end-line="7" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -76,13 +77,13 @@
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/views/footer.jade" />
-        <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/node_modules/angularjs/index.js" />
         <option value="$PROJECT_DIR$/public/javascripts/track-houston.js" />
         <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/views/layout.jade" />
+        <option value="$PROJECT_DIR$/views/index.jade" />
       </list>
     </option>
   </component>
@@ -790,7 +791,7 @@
       <created>1440389779355</created>
       <option name="number" value="Default" />
       <updated>1440389779355</updated>
-      <workItem from="1440389796767" duration="5263000" />
+      <workItem from="1440389796767" duration="5335000" />
     </task>
     <task id="LOCAL-00001" summary="Added procfile.">
       <created>1440389964111</created>
@@ -936,11 +937,17 @@
       <option name="project" value="LOCAL" />
       <updated>1440395470916</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Deploy">
+      <created>1440395561267</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1440395561267</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5263000" />
+    <option name="totallyTimeSpent" value="5335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="693" extended-state="0" />
@@ -1146,10 +1153,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6666667">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding>
+            <marker date="1440395545000" expanded="true" signature="-1:-1" placeholder="{&quot;name&quot;: &quot;track-houston&quot;...}" />
+            <marker date="1440395545000" expanded="true" signature="-1:-1" placeholder="{&quot;start&quot;: &quot;node ./bin/www&quot;...}" />
+            <marker date="1440395545000" expanded="true" signature="-1:-1" placeholder="{&quot;body-parser&quot;: &quot;~1.13.2&quot;...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5859375">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.390625">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="14" selection-end-column="94" />
           <folding>
             <marker date="1440395379000" expanded="true" signature="-1:-1" placeholder="..." />
             <marker date="1440395379000" expanded="true" signature="-1:-1" placeholder="..." />
@@ -1159,44 +1178,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7265625">
-          <caret line="107" column="28" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="28" />
-          <folding>
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1440394218000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5833333">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.2734375">
+          <caret line="7" column="88" selection-start-line="7" selection-start-column="88" selection-end-line="7" selection-end-column="88" />
           <folding />
         </state>
       </provider>
