@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://$USER_HOME$/Desktop/Aethos/Aethos-parser/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Desktop/Aethos/Aethos-parser/lib" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Desktop/Aethos/Aethos-parser/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Desktop/Aethos/Aethos-parser/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>
