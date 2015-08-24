@@ -42,7 +42,7 @@ block content
                         li
                             a(id='ManNoteSetBUTT', href='#inputTimes', data-theme='a', data-ajax='false') Input Times
                         li
-                            a(id='ManNoteSetBUTT', href='#coachUpdateRoster', data-theme='a', data-ajax='false') Update Roster
+                            a(id='ManNoteSetBUTT', href='#coachCreateAccount', data-theme='a', data-ajax='false') Update Roster
 
                 // student navigation bar
                 div(ng-hide='!isStudent' data-role='navbar')
@@ -102,6 +102,7 @@ block content
                         // success-message upon successful creation
                         | {{createCoachSuccess}}
 
+
                     // form to create a new admin
                     form#adminForm(ng-show="newAcctType=='admin'", ng-hide="!isAdmin || newAcctType != 'admin'", method='post')
 
@@ -127,7 +128,7 @@ block content
                         | {{createAdminSuccess}}
 
                     // form to create a new student
-                    form#studentForm(ng-show="newAcctType=='student'", ng-hide="!isStudent", method='post')
+                    form#studentForm-admin(ng-show="newAcctType=='student'", ng-hide="!isStudent", method='post')
 
                         // create student form header
                         h1 Create Student Account
@@ -141,8 +142,8 @@ block content
                         input#studentForm-lname(type='text', name='studentForm-lname')
 
                         // new student's parent's name
-                        label(for='studentForm-parentsname') Parent's full name:
-                        input#studentForm-parentsName(type='text', name='studentForm-parentsName')
+                        label(for='studentForm-parentName') Parent's full name:
+                        input#studentForm-parentsName(type='text', name='studentForm-parentName')
 
                         // new student's birth year
                         label(for='studentForm-birthYear') Birth year:
@@ -158,8 +159,39 @@ block content
                         // success-message upon successful creation
                         | {{createStudentSuccess}}
 
-                #coachUpdateRoster(ng-hide="!isCoach").ui-content
-                    //TODO make a checkbox to determine if user is a coach or not, if so then use angularJS to dynamically update form on the spot.
+                #coachCreateAccount(ng-hide="!isCoach").ui-content
+                    // form to create a new student
+                    form#studentForm-coach(ng-show="isCoach", method='post')
+
+                        // create student form header
+                        h1 Create Student Account
+
+                        // new student's first name
+                        label(for='studentForm-fname-coach') First name:
+                        input#studenForm-fname(type='text', name='studentForm-fname-coach')
+
+                        // new student's last name
+                        label(for='studentForm-lname-coach') Last name:
+                        input#studentForm-lname(type='text', name='studentForm-lname-coach')
+
+                        // new student's parent's name
+                        label(for='studentForm-parentName-coach') Parent's full name:
+                        input#studentForm-parentName(type='text', name='studentForm-parentName-coach')
+
+                        // new student's birth year
+                        label(for='studentForm-birthYear-coach') Birth year:
+                        input#studentForm-birthYear(type='studentForm-birthYear-coach', name='studentForm-birthYear-coach')
+
+                        // new student's practice site
+                        label(for='studentForm-practiceSite') Practice site:
+                        input#studentForm-practiceSite(type='text', name='studentForm-practiceSite')
+
+                        // submit button for student input form
+                        button(ng-click='submitStudentForm()', type='submit', data-inline='true', value='Submit') Create Account
+
+                        // success-message upon successful creation
+                        | {{createStudentSuccess}}
+
                     form#athleteForm(method='post')
                         h1 Create Student Account
                         label(for='fname') First name:

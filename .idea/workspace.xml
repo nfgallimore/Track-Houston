@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f218f1ec-9d71-4bfe-a242-a8922d32825c" name="Default" comment="Deploy">
+    <list default="true" id="f218f1ec-9d71-4bfe-a242-a8922d32825c" name="Default" comment="Found a typo on the label for lname field for create student account.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/track-houston.js" afterPath="$PROJECT_DIR$/public/javascripts/track-houston.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="track-houston.iws" />
@@ -29,8 +30,8 @@
       <file leaf-file-name="index.jade" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5703125">
-              <caret line="96" column="29" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
+            <state vertical-scroll-proportion="9.6484375">
+              <caret line="247" column="50" selection-start-line="247" selection-start-column="49" selection-end-line="247" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -845,25 +846,7 @@
       <updated>1440389779355</updated>
       <workItem from="1440389796767" duration="6443000" />
       <workItem from="1440399464335" duration="9966000" />
-      <workItem from="1440415263037" duration="15618000" />
-    </task>
-    <task id="LOCAL-00003" summary="Deploy">
-      <created>1440390120478</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1440390120478</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Deploy">
-      <created>1440390159059</created>
-      <option name="number" value="00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1440390159060</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Deploy">
-      <created>1440390224410</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1440390224410</updated>
+      <workItem from="1440415263037" duration="18056000" />
     </task>
     <task id="LOCAL-00006" summary="Deploy">
       <created>1440390296950</created>
@@ -1141,11 +1124,29 @@
       <option name="project" value="LOCAL" />
       <updated>1440431877277</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Found a typo on the label for lname field for create student account.">
+      <created>1440432081401</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1440432081402</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Found a typo on the label for lname field for create student account.">
+      <created>1440432171430</created>
+      <option name="number" value="00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1440432171430</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Found a typo on the label for lname field for create student account.">
+      <created>1440434704563</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1440434704563</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32027000" />
+    <option name="totallyTimeSpent" value="34465000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-46" y="23" width="1280" height="693" extended-state="6" />
@@ -1206,7 +1207,8 @@
     <MESSAGE value="Added localized version of javascripts." />
     <MESSAGE value="Getting there" />
     <MESSAGE value="Deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deploy" />
+    <MESSAGE value="Found a typo on the label for lname field for create student account." />
+    <option name="LAST_COMMIT_MESSAGE" value="Found a typo on the label for lname field for create student account." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -3411,59 +3413,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/track-houston.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8051948">
-          <caret line="158" column="4" selection-start-line="158" selection-start-column="4" selection-end-line="158" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.6901042">
+          <caret line="88" column="37" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="37" />
           <folding>
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="/** Created by nickgallimore on 8/24/15. ...*/" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="[...]" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1440431798000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="/** Created by nickgallimore on 8/24/15. ...*/" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="[...]" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1440433199000" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5703125">
-          <caret line="96" column="29" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
+        <state vertical-scroll-proportion="9.6484375">
+          <caret line="247" column="50" selection-start-line="247" selection-start-column="49" selection-end-line="247" selection-end-column="50" />
           <folding />
         </state>
       </provider>

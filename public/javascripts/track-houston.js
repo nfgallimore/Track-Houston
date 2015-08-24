@@ -80,7 +80,8 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
         Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
         var Coach = Parse.Object.extend("Coach");
         var coach = new Coach();
-        coach.set("name", $("#coachForm-fullname").val());
+        coach.set("fname", $("#coachForm-fname").val());
+        coach.set("lname", $("#coachForm-lname").val());
         coach.set("email", $("#coachForm-email").val());
         coach.set("position", $("#coachForm-position").val());
         coach.set("homesite", $("#coachForm-homesite").val());
