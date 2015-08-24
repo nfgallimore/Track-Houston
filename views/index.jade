@@ -207,7 +207,7 @@ block content
                     // profile picture
                     // grades
 
-                div(ng-hide="!isStudent", id ='studentGradeInput').ui-content
+                #studentGradeInput.ui-content(ng-hide="!isStudent")
                     form#studentGradeInputForm(method='post')
                         h1 Study Buddy for Class 1
                         label(for='class1') What is the name of your first class?
