@@ -205,13 +205,14 @@ block content
                         label(for='practice') Practice site:
                         input#practicesite(type='text', name='practicesite')
                         button(ng-click='submitAthleteForm()', type='submit', data-inline='true', value='Submit') Create Account
+
                 #studentProfile.ui-content
                     // profile picture
                     // grades
 
                 #studentGradeInput.ui-content
                     form#studentGradeInputForm(method='post')
-                        h1 Create Student Account
+                        h1 Study Buddy for Class One
                         label(for='class1') What is the name of your first class?
                         input#class1(type='text', name='class1')
 
@@ -221,7 +222,7 @@ block content
                         label(for='like1') Do you like it?
                         input#like1(type='text', name='like1')
 
-                        h1 Create Student Account
+                        h1 Study Buddy for Class Two
                         label(for='class2') What is the name of your second class?
                         input#class2(type='text', name='class2')
                         label(for='grade2') What is your current grade in {{class2}}?
