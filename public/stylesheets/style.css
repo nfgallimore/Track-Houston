@@ -1,8 +1,44 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body { font-family: Century Gothic, sans-serif;; }
+H1 {
+  background: #3C3C63 !important;
+  padding:10px;
+  border: 2px solid #f60;
+  color: #ccc;
+  text-shadow:none}
+
+p, label {
+  color:#f60;
+  text-shadow: #3C3C63  1px 1px;
+  font-size:20px !Important;}
+
+#customHeader {
+  background:#3C3C63;
+  border: 2px solid #f60;}
+
+H1.ext1 {border: none;}
+
+#ManNoteSetBUTT { color:#3C3C63;
+  background: #f60;
+  border: 2px solid #3C3C63;
+  text-shadow:none;}
+
+#OrgSubmButts {
+  background: #f60;
+  border: 2px solid #3C3C63;
+  text-shadow: #ccc  1px 1px;
 }
 
-a {
-  color: #00B7FF;
+.ui-page {
+  background: #EBEBF5 !important;
+}
+
+input {
+  width:100%;
+  outline:2px solid !important;
+  outline-color: #f60 !important;
+  -moz-border-radius: 0px !important;
+  -khtml-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
+  border-radius: 0px !important;}
+
 }
