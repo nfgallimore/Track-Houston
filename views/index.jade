@@ -1,137 +1,113 @@
-doctype html
-//
-  Copyright (c) 2015 by Nick Gallimore
-  All rights reserved.
-html
-  // start of header
-  head
-    // meta data
-    meta(name='robots', content='noindex')
-    meta(charset='utf-8')
-    meta(name='description', content='Track Times')
-    // screen size
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    // title
-    title Track-Houston
-    // css stylesheets
-    link(rel='stylesheet', href='http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css')
-    link(rel='stylesheet', href='styles.css')
-    // javascripts
-    script(type='text/javascript', src='http://www.parsecdn.com/js/parse-1.5.0.min.js')
-    script(type='text/javascript', src='http://code.jquery.com/jquery-1.11.3.min.js')
-    script(type='text/javascript', src='http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js')
-    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js')
-    script(type='text/javascript', src='track-houston.js')
-  // start of body
-  body(ng-app='TrackHouston')
-    // this is only shown when currentUser is unknown (aka the variable currentUser == nil )
-    div(ng-hide='currentUser')
-      form(ng-show="scenario == 'Log in'")
-        h2 Log in
-        // TODO make these into labels for each input
-        | Username:  
-        input(colspan='0', type='text', ng-model='user.username')
-        br
-        |         Password:  
-        input(colspan='1', type='password', ng-model='user.password')
-        br
-        // when this button is clicked, it runs the logIn function, this was borrowed code, to access the elements of the form, since the function logIn has a parameter called "form" we pass in the varaible 'user' as the parameter [this is where I thought the variable 'user' was the ID of the form, but it is not, you can do that as well, but for some reason the function says 'form' as the name of the variable, see track-houston.js, in other words idfk what the ng-model="user.username" is, at first I thought it was a form but now I guess its an AngularJS  ng-model, one of equivalence to that of the "user" class in the parse database (our main api we post data to ATM until we setup NodeJS backend-server (or google Go)
-        // o_o I fking hate javascript and html o.O
-        button(ng-click='logIn(user)') Log in
-    div(ng-show='currentUser')
-      #pageone(data-role='page')
-        div(data-role='header')
-          h1 Welcome to Track-Houston!
-        div(data-role='tabs')
-          #one.ui-content
-            h1 Welcome {{currentUser.get('username')}}
-            p  You have been successfully logged in
-            button(ng-click='logOut(user)') Log out
-          div(data-role='navbar')
-            ul
-              li
-                a(href='#season', data-theme='a', data-ajax='true') Manage Time(s)
-              li
-                a(href='#notes', data-theme='a', data-ajax='false') Notes
-              li
-                a(href='#roster', data-theme='a', data-ajax='false') Settings
-          // Form to enter roster data
-          #roster.ui-content
-            form#coachForm(method='post')
-              h1 Coaching Staff Inputs
-              // coach's full name
-              label(for='fullname') Full name:
-              input#coachForm-fullname(type='text', name='fullname')
-              // coach's position
-              label(for='coachposition') Position:
-              input#coachForm-position(type='text', name='coachposition')
-              // coach's homesite
-              label(for='homesite') Home site:
-              input#coachForm-homesite(type='text', name='Hsite')
-              // submit button for coach input form
-              button(ng-click='createCoach()', type='submit', data-inline='true', value='Submit') Create Coach
-              |               {{createCoachSuccess}}
-            form#athleteForm(method='post')
-              h1 Athlete Inputs
-              label(for='fullname') Full name:
-              input#fullname(type='text', name='fullname')
-              label(for='fullname') Parent's name:
-              input#parentsname(type='text', name='parentsname')
-              label(for='bday') Date of Birth:
-              input#bday(type='date', name='bday')
-              label(for='practice') Practice site:
-              input#practicesite(type='text', name='Psite')
-              button(ng-click='submitAthleteForm()', type='submit', data-inline='true', value='Submit') Create Athlete
-          #notes.ui-content
-            h1 Create New Note
-            label(for='searchStudentsNoteInput') Search for a student by name:
-            input#searchStudentsNoteInput(type='search', name='searchStudentsNoteInput')
-            div(data-role='fieldcontain')
-              textarea#textarea(cols='40', rows='8', name='textarea')
-            button(ng-click='submitNoteForm()', type='submit', data-inline='true', value='Submit') Submit
-          #season.ui-content
-            // Div to enter run data
-            h1 Input New Run
-            form#runForm(method='post')
-              // start of runForm
-              // Date
-              label(for='date') Event Date:
-              input#date(type='date', data-clear-btn='false', name='date', value='')
-              // Event
-              fieldset.ui-field-contain
-                label(for='event') Select Event
-                select#event(name='event')
-                  option(value='100m') 100 Meters
-                  option(value='200m') 200 Meters
-                  option(value='400m') 400 Meters
-                  option(value='1mi') 1 Mile
-                  option(value='2mi') 2 Miles
-                  option(value='other') Other
-                  // TODO if "other" is selected redirect to "create event" link
-              // Name
-              fieldset.ui-field-contain
-                label(for='event') Select Athlete
-                select#name(name='name')
-                  option(value='Maria') Maria
-                  option(value='Watson') Watson
-                  option(value='Carmello') Carmello
-                  option(value='other') Other
-                  // TODO if "other" is selected redirect to "create user" link
-              // Submit button
-              label Time:
-              input#time(type='number', name='time', placeholder='Decimal', ng-model='myDecimal', step='any')
-              input(ng-click='submitRunForm()', type='submit', data-inline='true', value='Submit New Time')
-          table#runTable.ui-body-d.ui-shadow.table-stripe.ui-responsive(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to         <thead class=')
+extends layout
+
+block content
+  // this is only shown when currentUser is unknown (aka the variable currentUser == nil )
+  div(ng-hide='currentUser')
+    form(ng-show="scenario == 'Log in'")
+      h2 Log in
+      // TODO make these into labels for each input
+      | Username:
+      input(colspan='0', type='text', ng-model='user.username')
+      br
+      |     Password:
+      input(colspan='1', type='password', ng-model='user.password')
+      br
+      button(ng-click='logIn(user)') Log in
+  div(ng-show='currentUser')
+    #pageone(data-role='page')
+      div(data-role='header')
+        h1 Welcome to Track-Houston!
+      div(data-role='tabs')
+        #one.ui-content
+          h1 Welcome {{currentUser.get('username')}}
+          p  You have been successfully logged in
+          button(ng-click='logOut(user)') Log out
+        div(data-role='navbar')
+          ul
+            li
+              a(href='#season', data-theme='a', data-ajax='true') Manage Time(s)
+            li
+              a(href='#notes', data-theme='a', data-ajax='false') Notes
+            li
+              a(href='#roster', data-theme='a', data-ajax='false') Settings
+        // Form to enter roster data
+        #roster.ui-content
+          form#coachForm(method='post')
+            h1 Coaching Staff Inputs
+            // coach's full name
+            label(for='fullname') Full name:
+            input#coachForm-fullname(type='text', name='fullname')
+            // coach's position
+            label(for='coachposition') Position:
+            input#coachForm-position(type='text', name='coachposition')
+            // coach's homesite
+            label(for='homesite') Home site:
+            input#coachForm-homesite(type='text', name='Hsite')
+            // submit button for coach input form
+            button(ng-click='createCoach()', type='submit', data-inline='true', value='Submit') Create Coach
+            |           {{createCoachSuccess}}
+          form#athleteForm(method='post')
+            h1 Athlete Inputs
+            label(for='fullname') Full name:
+            input#fullname(type='text', name='fullname')
+            label(for='fullname') Parent's name:
+            input#parentsname(type='text', name='parentsname')
+            label(for='bday') Date of Birth:
+            input#bday(type='date', name='bday')
+            label(for='practice') Practice site:
+            input#practicesite(type='text', name='Psite')
+            button(ng-click='submitAthleteForm()', type='submit', data-inline='true', value='Submit') Create Athlete
+        #notes.ui-content
+          h1 Create New Note
+          label(for='searchStudentsNoteInput') Search for a student by name:
+          input#searchStudentsNoteInput(type='search', name='searchStudentsNoteInput')
+          div(data-role='fieldcontain')
+            textarea#textarea(cols='40', rows='8', name='textarea')
+          button(ng-click='submitNoteForm()', type='submit', data-inline='true', value='Submit') Submit
+        #season.ui-content
+          // Div to enter run data
+          h1 Input New Run
+          form#runForm(method='post')
+            // start of runForm
+            // Date
+            label(for='date') Event Date:
+            input#date(type='date', data-clear-btn='false', name='date', value='')
+            // Event
+            fieldset.ui-field-contain
+              label(for='event') Select Event
+              select#event(name='event')
+                option(value='100m') 100 Meters
+                option(value='200m') 200 Meters
+                option(value='400m') 400 Meters
+                option(value='1mi') 1 Mile
+                option(value='2mi') 2 Miles
+                option(value='other') Other
+                // TODO if "other" is selected redirect to "create event" link
+            // Name
+            fieldset.ui-field-contain
+              label(for='event') Select Athlete
+              select#name(name='name')
+                option(value='Maria') Maria
+                option(value='Watson') Watson
+                option(value='Carmello') Carmello
+                option(value='other') Other
+                // TODO if "other" is selected redirect to "create user" link
+            // Submit button
+            label Time:
+            input#time(type='number', name='time', placeholder='Decimal', ng-model='myDecimal', step='any')
+            input(ng-click='submitRunForm()', type='submit', data-inline='true', value='Submit New Time')
+        table#runTable.ui-body-d.ui-shadow.table-stripe.ui-responsive(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
+          thead.ui-bar-d
             th.label(data-priority='2') Last Name
             th.label(data-priority='1') Score
             th.label(data-priority='4') Event
             th.label(data-priority='3') Date
-          |             {{createRunTable()}}
-          script.
-            $( ".selector" ).table-columntoggle( "refresh" );
-          // settings div
-          #settings.ui-content
-        // end of main content
-        // footer
-        .jqm-footer(data-role='footer', data-position='fixed', data-tap-toggle='false')
-          p Copyright 2015 Virtual Theologies
+        |         {{createRunTable()}}
+        script.
+          $(".selector").table - columntoggle("refresh");
+        // settings div
+        #settings.ui-content
+      // end of main content
+      // footer
+      .jqm-footer(data-role='footer', data-position='fixed', data-tap-toggle='false')
+        p Copyright 2015 Virtual Theologies
