@@ -73,8 +73,8 @@ block content
                             label(for='coachForm-position') Position:
                             input#coachForm-position(type='text', name='coachForm-position')
                             // new coach's home site
-                            label(for='coachForm-hsite') Home Site:
-                            input#coachForm-hsite(type='text', name='coachForm-hsite')
+                            label(for='coachForm-homesite') Home Site:
+                            input#coachForm-homesite(type='text', name='coachForm-homesite')
                             // new coach's email
                             label(for='coachForm-email') Email:
                             input#coachForm-email(type='text', name='coachForm-email')
@@ -105,13 +105,13 @@ block content
                             h1 Create Student Account
                             // new student's first name
                             label(for='studentForm-fname') First name:
-                            input#studenForm-fname(type='text', name='studentForm-fname')
+                            input#studentForm-fname(type='text', name='studentForm-fname')
                             // new student's last name
                             label(for='studentForm-lname') Last name:
                             input#studentForm-lname(type='text', name='studentForm-lname')
                             // new student's parent's name
-                            label(for='studentForm-parentName') Parent's full name:
-                            input#studentForm-parentsName(type='text', name='studentForm-parentName')
+                            label(for='studentForm-parentName') Parent full name:
+                            input#studentForm-parentName(type='text', name='studentForm-parentName')
                             // new student's birth year
                             label(for='studentForm-birthYear') Birth year:
                             input#studentForm-birthYear(type='studentForm-birthYear', name='studentForm-birthYear')
@@ -119,7 +119,7 @@ block content
                             label(for='studentForm-practiceSite') Practice site:
                             input#studentForm-practiceSite(type='text', name='studentForm-practiceSite')
                             // submit button for student input form
-                            button(ng-click='submitStudentForm()', type='submit', data-inline='true', value='Submit') Create Account
+                            button(ng-click='createStudent()', type='submit', data-inline='true', value='Submit') Create Account
                             // success-message upon successful creation
                             | {{createStudentSuccess}}
                 // div for coach's create account (a.k.a. update roster)
@@ -131,7 +131,7 @@ block content
                             h1 Create Student Account
                             // new student's first name
                             label(for='studentForm-fname-coach') First name:
-                            input#studenForm-fname(type='text', name='studentForm-fname-coach')
+                            input#studentForm-fname(type='text', name='studentForm-fname-coach')
                             // new student's last name
                             label(for='studentForm-lname-coach') Last name:
                             input#studentForm-lname(type='text', name='studentForm-lname-coach')
@@ -156,7 +156,7 @@ block content
                 #gradeInput.ui-content
                     div(ng-hide="!isStudent")
                         // class 1
-                        h1 Study Buddy for Class 1
+                        h1 Grade Input
                         label(for='class1') What is the name of your first class?
                         input#class1(type='text', name='class1')
                         label(for='grade1') What is your current grade in {{class1}}?
@@ -164,7 +164,6 @@ block content
                         label(for='like1') Do you like it?
                         input#like1(type='text', name='like1')
                         // class 2
-                        h1 Study Buddy for Class 2
                         label(for='class2') What is the name of your second class?
                         input#class2(type='text', name='class2')
                         label(for='grade2') What is your current grade in {{class2}}?
@@ -172,7 +171,6 @@ block content
                         label(for='like') Do you like it?
                         input#like1(type='text', name='like2')
                         // class 3
-                        h1 Study Buddy for Class 3
                         label(for='class3') What is the name of your third class?
                         input#class1(type='text', name='class3')
                         label(for='grade3') What is your current grade in {{class3}}?
@@ -180,7 +178,6 @@ block content
                         label(for='like3') Do you like it?
                         input#like1(type='text', name='like3')
                         // class 4
-                        h1 Study Buddy for Class 4
                         label(for='class4') What is the name of your fourth class?
                         input#class1(type='text', name='class1')
                         label(for='grade4') What is your current grade in {{class4}}?
@@ -188,7 +185,6 @@ block content
                         label(for='like4') Do you like it?
                         input#like1(type='text', name='like4')
                         // class 5
-                        h1 Study Buddy for Class 5
                         label(for='class5') What is the name of your fifth class?
                         input#class5(type='text', name='class5')
                         label(for='grade5') What is your current grade in {{class5}}?
@@ -219,7 +215,7 @@ block content
                                     // TODO if "other" is selected redirect to "create event" link
                             // Name
                             fieldset.ui-field-contain
-                                label(for='event') Select Athlete
+                                label(for='name') Select Athlete
                                 select#name(name='name')
                                     option(value='Maria') Maria
                                     option(value='Watson') Watson
