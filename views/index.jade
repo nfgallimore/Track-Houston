@@ -13,7 +13,6 @@ block content
             button(ng-click='logIn(user)') Log in
     // shown when user is logged in
     div(ng-show='currentUser')
-
         #page(data-role='page')
             div(data-role='header', id='customHeader')
                 h1 Welcome to Track-Houston!
@@ -28,6 +27,8 @@ block content
                                 a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
                             li
                                 a(id='ManNoteSetBUTT', href='#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
+                            li
+                                a(id='ManNoteSetBUTT', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
                     // coach navigation bar
                     div(ng-hide="!isCoach", data-role='navbar')
                         ul
@@ -37,6 +38,8 @@ block content
                                 a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
                             li
                                 a(id='ManNoteSetBUTT', href='#coachCreateAccount', data-theme='a', data-ajax='false') Update Roster
+                            li
+                                a(id='ManNoteSetBUTT', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
                     // student navigation bar
                     div(ng-hide="!isStudent", data-role='navbar')
                         ul
@@ -150,15 +153,25 @@ block content
                             // success-message upon successful creation
                             | {{createStudentSuccess}}
                 #runTable.ui-content
-                    table#rundata.ui-body-d.ui-shadow.table-stripe.ui-responsive(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
+                    table#rundata.ui-body-d.ui-shadow.table-stripe.ui-responsive.table(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
                         thead
                             tr
-                                th Name
-                                th Time
-                                th Event
-                                th Date
+                                th(ts-criteria='Name') Name
+                                th(ts-criteria='Time' ts-default='') Time
+                                th(ts-criteria='Event') Event
+                                th(ts-criteria='Date') Date
                         tbody
                             tr
+                #viewGrades.ui-content
+                    table#gradeData.ui-body-d.ui-shadow.table-stripe.ui-responsive.table(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
+                        thead
+                            tr
+                                th(ts-criteria='Name') Name
+                                th(ts-criteria='Grade 1') Grade 1
+                                th(ts-criteria='Grade 2') Grade 2
+                                th(ts-criteria='Grade 3') Grade 3
+                                th(ts-criteria='Grade 4') Grade 4
+                                th(ts-criteria='Grade 5') Grade 5
                 #gradeInput.ui-content
                     div(ng-hide="!isStudent")
                         // class 1
@@ -176,25 +189,24 @@ block content
 
                         // class 3
                         label(for='class3') What is the name of your third class?
-                        input#class1(type='text', name='class3')
+                        input#class3(type='text', name='class3')
                         label(for='grade3') What is your current grade in it?
-                        input#grade1(type='text', name='grade3')
+                        input#grade3(type='text', name='grade3')
 
                         // class 4
                         label(for='class4') What is the name of your fourth class?
-                        input#class1(type='text', name='class1')
+                        input#class4(type='text', name='class4')
                         label(for='grade4') What is your current grade in it?
-                        input#grade1(type='text', name='grade4')
+                        input#grade4(type='text', name='grade4')
 
                         // class 5
                         label(for='class5') What is the name of your fifth class?
                         input#class5(type='text', name='class5')
                         label(for='grade5') What is your current grade in it?
-                        input#grade1(type='text', name='grade5')
-                        label(for='like5') Do you like it?
-                        input#like1(type='text', name='like5')
+                        input#grade5(type='text', name='grade5')
+
                         // submit button
-                        button(ng-click='submitGradeInputForm()', type='submit', data-inline='true', value='Submit') Enter Grades
+                        button(ng-click='submitGradeForm()', type='submit', data-inline='true', value='Submit') Enter Grades
                 #inputRun.ui-content
                     div(ng-hide="isStudent")
                         // Div to enter run data

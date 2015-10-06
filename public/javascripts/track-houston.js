@@ -12,7 +12,10 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
     $scope.isAdmin = false;
     $scope.isCoach = false;
     $scope.isStudent = false;
-    $scope.objects = null;
+    $scope.runs = [{}];    // The first node of the runs array contains the names of the table headers, this is unnecessary but it is just how it is. #yolo
+    $scope.noitems = [];
+    $scope.runsJSON = [];
+
     $scope.createAccount = function (form) {
         var user = new Parse.User();
         user.set("email", form.email);
@@ -61,9 +64,27 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
             }
         })
     };
+    $scope.submitGradeForm = function () {
+        var Grade = Parse.Object.extend("Grade");
+        var grade = new Grade();
+        grade.set("name", $scope.currentUser.get("username"));
+        console.log($scope.currentUser.get("username"));
+        grade.set("grade1", $("#class1").val() + ": " + $("#grade1").val());
+        grade.set("grade2", $("#class2").val() + ": " + $("#grade2").val());
+        grade.set("grade3", $("#class3").val() + ": " + $("#grade3").val());
+        grade.set("grade4", $("#class4").val() + ": " + $("#grade4").val());
+        grade.set("grade5", $("#class5").val() + ": " + $("#grade5").val());
+
+        grade.save(null, {
+            success: function (grade) {
+                grade.save();
+                console.log("Successfully ran the function submitGradeForm()!");
+            }
+        })
+    };
     $scope.createStudent = function () {
         Parse.User.enableRevocableSession();
-        var currUserToken = Parse.User.current().getSessionToken();
+        var currUserToken = $scope.currentUser.getSessionToken();
         var student = new Parse.User;
         student.set("username", ($("#studentForm-fname").val().charAt(0) + $("#studentForm-lname").val()).toLowerCase());
         student.set("password", "password");
@@ -92,7 +113,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
     };
     $scope.createCoach = function () {
         Parse.User.enableRevocableSession();
-        var currUserToken = Parse.User.current().getSessionToken();
+        var currUserToken = $scope.currentUser.getSessionToken();
         var coach = new Parse.User;
         coach.set("username", ($("#coachForm-fname").val().charAt(0) + $("#coachForm-lname").val()).toLowerCase());
         coach.set("password", "password");
@@ -133,13 +154,40 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
                     (function ($) {
                         $('#rundata').append('<tr><td>' + object.get('name') + '</td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
                     })(jQuery);
+                    var name = object.get('name');
+                    var time = object.get('time');
+                    var event = object.get('event');
+                    var date = object.get('date');
+                    var obj = {Name: name, Time: time, Event: event, Date: date};
+                    $scope.runs.push(obj);
+                    $scope.runsJSON.push(object.toJSON())
                 }
+                console.log($scope.runsJSON);
             },
             error: function (error) {
                 alert("Error: " + error.code + " " + error.message);
             }
         });
-
+        console.log($scope.runs);
+    };
+    $scope.createGradeTable = function () {
+        var Grade = Parse.Object.extend("Grade");
+        var query = new Parse.Query(Grade);
+        query.find({
+            success: function (results) {
+                for (var i = 0; i < results.length; i++) {
+                    var object = results[i];
+                    (function ($) {
+                        $('#gradeData').append('<tr><td>' + object.get('name') + '</td><td>' + object.get('grade1') + '</td><td>' + object.get('grade2') + '</td><td>' + object.get('grade3') + '</td><td>' + object.get('grade4') + '</td><td>' + object.get('grade5') + '</td></tr>');
+                    })(jQuery);
+                }
+                console.log($scope.runsJSON);
+            },
+            error: function (error) {
+                alert("Error: " + error.code + " " + error.message);
+            }
+        });
+        console.log($scope.runs);
     };
     $scope.updateType = function () {
         if ($scope.currentUser != null) {
@@ -168,6 +216,5 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
     };
     $scope.newAcctTypeUpdate();
     $scope.createRunTable();
+    $scope.createGradeTable();
 }]);
-
-
