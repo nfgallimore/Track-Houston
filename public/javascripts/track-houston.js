@@ -1,9 +1,9 @@
 /**
  * Created by nickgallimore on 8/24/15.
  */
-Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
-angular.module('track-houston', []).run(['$rootScope', function ($scope) {
 
+angular.module('track-houston', []).run(['$rootScope', function ($scope) {
+    Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
     $scope.scenario = 'Log in';
     $scope.currentUser = Parse.User.current();
     $scope.createCoachSuccess = null;
@@ -12,6 +12,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
     $scope.isAdmin = false;
     $scope.isCoach = false;
     $scope.isStudent = false;
+    $scope.objects = null;
     $scope.createAccount = function (form) {
         var user = new Parse.User();
         user.set("email", form.email);
@@ -27,7 +28,6 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
             }
         });
     };
-
     $scope.logIn = function (form) {
         Parse.User.logIn(form.username, form.password, {
             success: function (user) {
@@ -40,7 +40,6 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
             }
         });
     };
-
     $scope.logOut = function (form) {
         Parse.User.logOut();
         $scope.currentUser = null;
@@ -48,32 +47,21 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
         $scope.isCoach = false;
         $scope.isStudent = false;
     };
-
     $scope.submitRunForm = function () {
-        Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
         var Run = Parse.Object.extend("Run");
         var run = new Run();
         run.set("name", $("#name").val());
         run.set("time", $("#time").val());
         run.set("event", $("#event").val());
-        run.set("date", $("#date").val());
+        run.set("date", $("#datepicker1").val());
         run.save(null, {
             success: function (run) {
                 run.save();
                 console.log("Successfully ran the function submitRunForm()!");
-                $scope.createRunTable();
             }
         })
     };
-    /*
-     studentForm-fname
-     ...        lname
-     ...        parentName
-     ...        birthYear
-     ...        practiceSite
-     */
     $scope.createStudent = function () {
-        Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
         Parse.User.enableRevocableSession();
         var currUserToken = Parse.User.current().getSessionToken();
         var student = new Parse.User;
@@ -102,9 +90,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
             }
         });
     };
-
     $scope.createCoach = function () {
-        Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
         Parse.User.enableRevocableSession();
         var currUserToken = Parse.User.current().getSessionToken();
         var coach = new Parse.User;
@@ -120,7 +106,6 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
             $scope.createCoachSuccess = 'Invalid Email'
         }
         coach.set("email", email);
-
         coach.signUp(null, {
             success: function (coach) {
                 coach.save();
@@ -138,9 +123,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
             }
         })
     };
-
     $scope.createRunTable = function () {
-        Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
         var Run = Parse.Object.extend("Run");
         var query = new Parse.Query(Run);
         query.find({
@@ -148,7 +131,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
                     (function ($) {
-                        $('#runTable').append('<tr><td>' + object.get('name') + '</td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
+                        $('#rundata').append('<tr><td>' + object.get('name') + '</td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
                     })(jQuery);
                 }
             },
@@ -156,27 +139,8 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
                 alert("Error: " + error.code + " " + error.message);
             }
         });
-    };
 
-    $scope.createNotesThread = function () {
-        Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
-        var Student = Parse.Object.extend("Student");
-        var query = new Parse.Query(Student);
-        query.find({
-            success: function (results) {
-                for (var i = 0; i < results.length; i++) {
-                    var object = results[i];
-                    (function ($) {
-                        $('#notesTable').append('<tr><td>' + object.get('name') + '</td><td>' + object.get('privNote') + '</td><td>' + object.get('pubNote') + '</td><td>' + object.get('date') + '</td></tr>');
-                    })(jQuery);
-                }
-            },
-            error: function (error) {
-                alert("Error: " + error.code + " " + error.message);
-            }
-        });
     };
-
     $scope.updateType = function () {
         if ($scope.currentUser != null) {
             if ($scope.currentUser.attributes.type === "student") {
@@ -190,7 +154,6 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
             }
         }
     };
-
     $scope.updateType();
     $scope.newAcctTypeUpdate = function () {
         if ($(studentType)[0].checked) {
@@ -203,7 +166,8 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
             $scope.newAcctType = "admin";
         }
     };
-
     $scope.newAcctTypeUpdate();
-
+    $scope.createRunTable();
 }]);
+
+
