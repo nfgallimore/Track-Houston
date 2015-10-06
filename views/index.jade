@@ -13,6 +13,7 @@ block content
             button(ng-click='logIn(user)') Log in
     // shown when user is logged in
     div(ng-show='currentUser')
+
         #page(data-role='page')
             div(data-role='header', id='customHeader')
                 h1 Welcome to Track-Houston!
@@ -22,7 +23,7 @@ block content
                     div(ng-hide="!isAdmin" data-role='navbar')
                         ul
                             li
-                                a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') View Data
+                                a(id='ManNoteSetBUTT', href='#runTable', data-theme='a', data-ajax='false') View Data
                             li
                                 a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
                             li
@@ -31,7 +32,7 @@ block content
                     div(ng-hide="!isCoach", data-role='navbar')
                         ul
                             li
-                                a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') View Data
+                                a(id='ManNoteSetBUTT', href='#runTable', data-theme='a', data-ajax='false') View Data
                             li
                                 a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
                             li
@@ -40,7 +41,7 @@ block content
                     div(ng-hide="!isStudent", data-role='navbar')
                         ul
                             li
-                                a(id='ManNoteSetBUTT', href='#notes', data-theme='a', data-ajax='false') View Data
+                                a(id='ManNoteSetBUTT', href='#runTable', data-theme='a', data-ajax='false') View Data
                             li
                                 a(id='ManNoteSetBUTT', href='#gradeInput', data-theme='a', data-ajax='false') Input Grades
                             li
@@ -148,46 +149,47 @@ block content
                             button(ng-click='submitStudentForm()', type='submit', data-inline='true', value='Submit') Create Account
                             // success-message upon successful creation
                             | {{createStudentSuccess}}
-                #notes.ui-content
-                    label(for='searchStudentsNoteInput') Search for a student by name:
-                    input#searchStudentsNoteInput(type='search', name='searchStudentsNoteInput')
-                    table#runTable.ui-body-d.ui-shadow.table-stripe.ui-responsive(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
-                    | {{createRunTable()}}
+                #runTable.ui-content
+                    table#rundata.ui-body-d.ui-shadow.table-stripe.ui-responsive(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
+                        thead
+                            tr
+                                th Name
+                                th Time
+                                th Event
+                                th Date
+                        tbody
+                            tr
                 #gradeInput.ui-content
                     div(ng-hide="!isStudent")
                         // class 1
                         h1 Grade Input
                         label(for='class1') What is the name of your first class?
                         input#class1(type='text', name='class1')
-                        label(for='grade1') What is your current grade in {{class1}}?
+                        label(for='grade1') What is your current grade in it?
                         input#grade1(type='text', name='grade1')
-                        label(for='like1') Do you like it?
-                        input#like1(type='text', name='like1')
+
                         // class 2
                         label(for='class2') What is the name of your second class?
                         input#class2(type='text', name='class2')
-                        label(for='grade2') What is your current grade in {{class2}}?
+                        label(for='grade2') What is your current grade in it?
                         input#grade2(type='text', name='grade2')
-                        label(for='like') Do you like it?
-                        input#like1(type='text', name='like2')
+
                         // class 3
                         label(for='class3') What is the name of your third class?
                         input#class1(type='text', name='class3')
-                        label(for='grade3') What is your current grade in {{class3}}?
+                        label(for='grade3') What is your current grade in it?
                         input#grade1(type='text', name='grade3')
-                        label(for='like3') Do you like it?
-                        input#like1(type='text', name='like3')
+
                         // class 4
                         label(for='class4') What is the name of your fourth class?
                         input#class1(type='text', name='class1')
-                        label(for='grade4') What is your current grade in {{class4}}?
+                        label(for='grade4') What is your current grade in it?
                         input#grade1(type='text', name='grade4')
-                        label(for='like4') Do you like it?
-                        input#like1(type='text', name='like4')
+
                         // class 5
                         label(for='class5') What is the name of your fifth class?
                         input#class5(type='text', name='class5')
-                        label(for='grade5') What is your current grade in {{class5}}?
+                        label(for='grade5') What is your current grade in it?
                         input#grade1(type='text', name='grade5')
                         label(for='like5') Do you like it?
                         input#like1(type='text', name='like5')
