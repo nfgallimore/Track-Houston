@@ -15,12 +15,47 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
     $scope.runs = [{}];    // The first node of the runs array contains the names of the table headers, this is unnecessary but it is just how it is. #yolo
     $scope.noitems = [];
     $scope.runsJSON = [];
-
+    $scope.createAdminSuccess = null;
+    $scope.createAdmin = function () {
+        Parse.User.enableRevocableSession();
+        var currUserToken = $scope.currentUser.getSessionToken();
+        var admin = new Parse.User;
+        admin.set("username", ($("#adminForm-fname").val().charAt(0) + $("#adminForm-lname").val()).toLowerCase());
+        admin.set("password", "password");
+        admin.set("type", "admin");
+        admin.set("fname", $("#adminForm-fname").val().toLowerCase());
+        admin.set("lname", $("#adminForm-lname").val().toLowerCase());
+        var email = $("#adminForm-email").val();
+        if (email.indexOf("@") > -1 || email.indexOf("." > -1)) {
+            $scope.createAdminSuccess = 'Invalid Email'
+        }
+        admin.set("email", email);
+        admin.signUp(null, {
+            success: function (admin) {
+                admin.save();
+                $scope.createAdminSuccess = 'Coach successfully created!';
+                $scope.$apply();
+                Parse.User.become(currUserToken, null).then(function (newUser) {
+                    // The current user is now set to user.
+                }, function (error) {
+                    // The token could not be validated.
+                });
+                console.log("Good news boss, I Successfully ran the function createCoach()!");
+            },
+            error: function (coach, error) {
+                alert("Unable to sign up:  " + error.code + " " + error.message);
+            }
+        })
+    };
     $scope.createAccount = function (form) {
         var user = new Parse.User();
         user.set("email", form.email);
         user.set("username", form.username);
         user.set("password", form.password);
+        //user.set("fname", $("#firstname").val());
+        //user.set("lname", $("#lastname").val());
+        //user.set("byear", $("#birthyear").val());
+        //if (form.globalpassword.equals("trackhouston")) {
         user.signUp(null, {
             success: function (user) {
                 $scope.currentUser = user;
@@ -30,6 +65,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
                 alert("Unable to sign up:  " + error.code + " " + error.message);
             }
         });
+        //}
     };
     $scope.logIn = function (form) {
         Parse.User.logIn(form.username, form.password, {

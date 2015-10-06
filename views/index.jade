@@ -10,7 +10,19 @@ block content
             | Password:
             input(type='password', ng-model='user.password')
             br
+            br
             button(ng-click='logIn(user)') Log in
+            //| First name:
+            //input(type='text', id='firstname')
+            //br
+            //| Last name:
+            //input(type='text', id='lastname')
+            //br
+            //| Birth year:
+            //input(type='text', id='birthyear')
+            //br
+            //br
+            button(ng-click='createAccount(user)') Create Account
     // shown when user is logged in
     div(ng-show='currentUser')
         #page(data-role='page')
@@ -40,15 +52,6 @@ block content
                                 a(id='ManNoteSetBUTT', href='#coachCreateAccount', data-theme='a', data-ajax='false') Update Roster
                             li
                                 a(id='ManNoteSetBUTT', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
-                    // student navigation bar
-                    div(ng-hide="!isStudent", data-role='navbar')
-                        ul
-                            li
-                                a(id='ManNoteSetBUTT', href='#runTable', data-theme='a', data-ajax='false') View Data
-                            li
-                                a(id='ManNoteSetBUTT', href='#gradeInput', data-theme='a', data-ajax='false') Input Grades
-                            li
-                                a(id='ManNoteSetBUTT', href='#profile', data-theme='a', data-ajax='false') My Runs
                     // logout button
                     button(ng-click='logOut(user)') Log out
                 // form for admin to create new accounts
