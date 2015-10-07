@@ -12,7 +12,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
     $scope.isAdmin = false;
     $scope.isCoach = false;
     $scope.isStudent = false;
-    $scope.runs = [{}];    // The first node of the runs array contains the names of the table headers, this is unnecessary but it is just how it is. #yolo
+    $scope.runs = [{}];
     $scope.noitems = [];
     $scope.runsJSON = [];
     $scope.createAdminSuccess = null;
@@ -93,6 +93,22 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
         run.set("time", $("#time").val());
         run.set("event", $("#event").val());
         run.set("date", $("#datepicker1").val());
+        var username = "";
+        var User = Parse.Object.extend("_User");
+        var query = new Parse.Query(User);
+        query.find({
+            success: function (results) {
+                for (var i = 0; i < results.length; i++) {
+                    if ((results[i].get("fname") + " " + results[i].get("lname")).equals($("#name").val())) {
+                        username = results[i].get("username");
+                    }
+                }
+            },
+            error: function (user, error) {
+                alert("Unable to log in: " + error.code + " " + error.message);
+            }
+        });
+        run.set("username", username);
         run.save(null, {
             success: function (run) {
                 run.save();
@@ -180,6 +196,80 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
             }
         })
     };
+    $scope.lookUpNameByUsername = function (username) {
+        var User = Parse.Object.extend("_User");
+        var query = new Parse.Query(User);
+        query.find({
+            success: function (results) {
+                for (var i = 0; i < results.length; i++) {
+                    var usrname = results[i].get("username");
+                    if (usrname === username) {
+                        var fname = results[i].get("fname");
+                        var lname = results[i].get("lname");
+                        var name = fname + " " + lname;
+                        console.log(name);
+                        return name;
+                    }
+                }
+            },
+            error: function (results, error) {
+                alert("Unable to find name: " + error.code + " " + error.message);
+            }
+        })
+    };
+    $scope.lookUpUsernameByName = function (name) {
+        var User = Parse.Object.extend("_User");
+        var query = new Parse.Query(User);
+        query.find({
+            success: function (results) {
+                for (var i = 0; i < results.length; i++) {
+                    var fname = results[i].get("fname");
+                    var lname = results[i].get("lname");
+                    var n = fname + " " + lname;
+                    if (n === name) {
+                        console.log(results[i].get("username"));
+                        return results[i].get("username");
+                    }
+                }
+            },
+            error: function (results, error) {
+                alert("Unable to find username: " + error.code + " " + error.message);
+            }
+        })
+    };
+    $scope.populateDropdown = function () {
+        var User = Parse.Object.extend("_User");
+        var query = new Parse.Query(User);
+        var namesArr = [];
+        query.find({
+            success: function (results) {
+                for (var i = 0; i < results.length; i++) {
+                    var fname = results[i].get("fname");
+                    var lname = results[i].get("lname");
+                    var name = fname + " " + lname;
+                    var username = $scope.lookUpUsernameByName(name);
+                    namesArr.push(name);
+                    console.log(name);
+                    (function ($) {
+                        $('#name').append($('<option>', {
+                            value: username,
+                            text: name
+                        }));
+                    })(jQuery);
+                }
+            },
+            error: function (results, error) {
+                alert("Unable to sign up:  " + error.code + " " + error.message);
+            }
+        });
+        console.log(namesArr);
+        for (var i = 0; i < namesArr.length; i++) {
+            $('#name').append($('<option>', {
+                value: $scope.lookUpUsernameByName(namesArr[i]),
+                text: namesArr[i]
+            }));
+        }
+    };
     $scope.createRunTable = function () {
         var Run = Parse.Object.extend("Run");
         var query = new Parse.Query(Run);
@@ -188,7 +278,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
                     (function ($) {
-                        $('#rundata').append('<tr><td>' + object.get('name') + '</td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
+                        $('#rundata').append('<tr><td><a href=#' + object.get('username') + '>' + object.get('name') + '</a></td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
                     })(jQuery);
                     var name = object.get('name');
                     var time = object.get('time');
@@ -204,7 +294,6 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
                 alert("Error: " + error.code + " " + error.message);
             }
         });
-        console.log($scope.runs);
     };
     $scope.createGradeTable = function () {
         var Grade = Parse.Object.extend("Grade");
@@ -217,13 +306,11 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
                         $('#gradeData').append('<tr><td>' + object.get('name') + '</td><td>' + object.get('grade1') + '</td><td>' + object.get('grade2') + '</td><td>' + object.get('grade3') + '</td><td>' + object.get('grade4') + '</td><td>' + object.get('grade5') + '</td></tr>');
                     })(jQuery);
                 }
-                console.log($scope.runsJSON);
             },
             error: function (error) {
                 alert("Error: " + error.code + " " + error.message);
             }
         });
-        console.log($scope.runs);
     };
     $scope.updateType = function () {
         if ($scope.currentUser != null) {
@@ -240,17 +327,20 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
     };
     $scope.updateType();
     $scope.newAcctTypeUpdate = function () {
-        if ($(studentType)[0].checked) {
+        if ($("#studentType")[0].checked) {
             $scope.newAcctType = "student";
         }
-        if ($(coachType)[0].checked) {
+        if ($("#coachType")[0].checked) {
             $scope.newAcctType = "coach";
         }
-        if ($(adminType)[0].checked) {
+        if ($("#adminType")[0].checked) {
             $scope.newAcctType = "admin";
         }
     };
     $scope.newAcctTypeUpdate();
     $scope.createRunTable();
     $scope.createGradeTable();
+    $scope.populateDropdown();
+    $scope.lookUpUsernameByName("john johnson");
+    $scope.lookUpNameByUsername("jjohnson");
 }]);

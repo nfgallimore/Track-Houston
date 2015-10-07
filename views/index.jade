@@ -159,10 +159,10 @@ block content
                     table#rundata.ui-body-d.ui-shadow.table-stripe.ui-responsive.table(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
                         thead
                             tr
-                                th(ts-criteria='Name') Name
-                                th(ts-criteria='Time' ts-default='') Time
-                                th(ts-criteria='Event') Event
-                                th(ts-criteria='Date') Date
+                                th Name
+                                th Time
+                                th Event
+                                th Date
                         tbody
                             tr
                 #viewGrades.ui-content
@@ -234,11 +234,6 @@ block content
                             fieldset.ui-field-contain
                                 label(for='name') Select Athlete
                                 select#name(name='name')
-                                    option(value='Maria') Maria
-                                    option(value='Watson') Watson
-                                    option(value='Carmello') Carmello
-                                    option(value='other') Other
-                                    // TODO if "other" is selected redirect to "create user" link
                             // Submit button
                             label Time:
                             input#time(type='number', name='time', placeholder='Decimal', ng-model='myDecimal', step='any')
