@@ -1,4 +1,7 @@
-body { font-family: Century Gothic, sans-serif;; }
+body {
+  text-align: center;
+  font-family: Century Gothic, sans-serif;
+}
 H1 {
   background: #3C3C63 !important;
   padding:10px;
@@ -12,17 +15,20 @@ p, label {
   font-size: 20px
 }
 
+#one div:nth-child(1) > center > ul > li:nth-child(5)
+
 #customHeader {
   background:#3C3C63;
   border: 2px solid #f60;}
 
 H1.ext1 {border: none;}
 
-#ManNoteSetBUTT { color:#3C3C63;
+#ManNoteSetBUTT {
+  color: #3C3C63;
   background: #f60;
   border: 2px solid #3C3C63;
-  text-shadow:none;}
-
+  text-shadow: none;
+}
 #OrgSubmButts {
   background: #f60;
   border: 2px solid #3C3C63;
@@ -31,6 +37,7 @@ H1.ext1 {border: none;}
 
 .ui-page {
   background: #EBEBF5 !important;
+  text-align: center;
 }
 
 input {

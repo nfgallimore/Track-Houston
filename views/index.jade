@@ -22,7 +22,7 @@ block content
             //input(type='text', id='birthyear')
             //br
             //br
-            button(ng-click='createAccount(user)') Create Account
+            //button(ng-click='createAccount(user)') Create Account
     // shown when user is logged in
     div(ng-show='currentUser')
         #page(data-role='page')
@@ -32,15 +32,19 @@ block content
                 #one.ui-content
                     // admin navigation bar
                     div(ng-hide="!isAdmin" data-role='navbar')
-                        ul
-                            li
-                                a(id='ManNoteSetBUTT', href='#runTable', data-theme='a', data-ajax='false') View Data
-                            li
-                                a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
-                            li
-                                a(id='ManNoteSetBUTT', href='#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
-                            li
-                                a(id='ManNoteSetBUTT', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
+                        center
+                            ul
+                                li
+                                    a(id='ManNoteSetBUTT', href='#runTable', data-theme='a', data-ajax='false') View Data
+                                br
+                                li
+                                    a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
+                                br
+                                li
+                                    a(id='ManNoteSetBUTT', href='#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
+                                br
+                                li
+                                    a(id='ManNoteSetBUTT', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
                     // coach navigation bar
                     div(ng-hide="!isCoach", data-role='navbar')
                         ul

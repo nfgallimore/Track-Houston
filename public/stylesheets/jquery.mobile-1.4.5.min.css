@@ -1352,7 +1352,7 @@ body.ui-mobile-viewport, div.ui-mobile-viewport {
     min-height: 1.1em;
     text-align: center;
     display: block;
-    margin: 0 30%;
+    margin: 0 1%;
     padding: .7em 0;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -2818,7 +2818,7 @@ ul.ui-grid-a, ul.ui-grid-b, ul.ui-grid-c, ul.ui-grid-d, ul.ui-grid-solo, li.ui-b
 }
 
 .ui-grid-a > .ui-block-a, .ui-grid-a > .ui-block-b {
-    width: 50%
+    width: 100%
 }
 
 .ui-grid-b > .ui-block-a, .ui-grid-b > .ui-block-b, .ui-grid-b > .ui-block-c {
