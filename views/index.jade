@@ -28,34 +28,34 @@ block content
         #page(data-role='page')
             div(data-role='header', id='customHeader')
                 h1 Welcome to Track-Houston!
-            div(data-role='tabs')
-                #one.ui-content
+            #tabs(data-role='tabs')
+                #navbar.ui-content
                     // admin navigation bar
                     div(ng-hide="!isAdmin" data-role='navbar')
                         center
                             ul
                                 li
-                                    a(id='ManNoteSetBUTT', href='#runTable', data-theme='a', data-ajax='false') View Data
+                                    a(id='button1', href="", data-theme='a', data-ajax='false').homeButton Home
                                 br
                                 li
-                                    a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
+                                    a(id='button1', href='#inputRun', data-theme='a', data-ajax='false') Input Times
                                 br
                                 li
-                                    a(id='ManNoteSetBUTT', href='#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
+                                    a(id='button1', href='#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
                                 br
                                 li
-                                    a(id='ManNoteSetBUTT', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
+                                    a(id='button1', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
                     // coach navigation bar
                     div(ng-hide="!isCoach", data-role='navbar')
                         ul
                             li
-                                a(id='ManNoteSetBUTT', href='#runTable', data-theme='a', data-ajax='false') View Data
+                                a(id='button1', href="", data-theme='a', data-ajax='false').homeButton Home
                             li
-                                a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
+                                a(id='button1', href='#inputRun', data-theme='a', data-ajax='false') Input Times
                             li
-                                a(id='ManNoteSetBUTT', href='#coachCreateAccount', data-theme='a', data-ajax='false') Update Roster
+                                a(id='button1', href='#coachCreateAccount', data-theme='a', data-ajax='false') Update Roster
                             li
-                                a(id='ManNoteSetBUTT', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
+                                a(id='button1', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
                     // logout button
                     button(ng-click='logOut(user)') Log out
                 // form for admin to create new accounts

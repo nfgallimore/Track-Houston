@@ -1,0 +1,26 @@
+//
+   Created by nickgallimore on 10/8/15.
+
+div(ng-hide='currentUser')
+    form(ng-show="scenario == 'Log in'")
+        h2 Log in
+        | Username:
+        input(type='text', ng-model='user.username')
+        br
+        | Password:
+        input(type='password', ng-model='user.password')
+        br
+        br
+        button(ng-click='logIn(user)') Log in
+        //| First name:
+        //input(type='text', id='firstname')
+        //br
+        //| Last name:
+        //input(type='text', id='lastname')
+        //br
+        //| Birth year:
+        //input(type='text', id='birthyear')
+        //br
+        //br
+        //button(ng-click='createAccount(user)') Create Account
+

@@ -23,12 +23,13 @@ p, label {
 
 H1.ext1 {border: none;}
 
-#ManNoteSetBUTT {
+#button1 {
   color: #3C3C63;
   background: #f60;
   border: 2px solid #3C3C63;
   text-shadow: none;
 }
+
 #OrgSubmButts {
   background: #f60;
   border: 2px solid #3C3C63;

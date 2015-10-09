@@ -1,0 +1,28 @@
+//
+    adminNavBar.jade
+    Created by nickgallimore on 10/8/15.
+//
+
+div(ng-hide="!isAdmin" data-role='navbar')
+    ul
+        li
+            a(id='button1',
+            href="",
+            data-theme='a',
+            data-ajax='false')
+            .homeButton Home
+        li
+            a(id='button1',
+            href='#inputRun',
+            data-theme='a',
+            data-ajax='false') Input Times
+        li
+            a(id='button1',
+            href='#adminCreateAccount',
+            data-theme='a',
+            data-ajax='false') Create Account
+        li
+            a(id='button1',
+            href='#viewGrades',
+            data-theme='a',
+            data-ajax='false') View Grades
