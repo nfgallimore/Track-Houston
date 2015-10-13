@@ -281,7 +281,7 @@ app.run([
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
                     (function ($) {
-                        $('#rundata').append('<tr><td><a nghref=users/' + object.get('username') + '>' + object.get('name') + '</a></td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
+                        $('#rundata').append('<tr><td><a href=users/' + object.get('username') + '>' + object.get('name') + '</a></td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
                     })(jQuery);
                     var name = object.get('name');
                     var time = object.get('time');
