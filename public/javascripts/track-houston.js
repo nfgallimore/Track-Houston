@@ -4,6 +4,12 @@
  */
 
 var app = angular.module('track-houston', []);
+app.controller("TrackHoustonCtrl", function ($scope)
+{
+
+    // dropdown other event controller
+
+});
 app.run([
     '$rootScope', function ($scope)
     {
@@ -20,6 +26,38 @@ app.run([
         $scope.noitems = [];
         $scope.runsJSON = [];
         $scope.createAdminSuccess = null;
+        //$scope.createEvent = function () {
+        //    var newEvent = $("#event").val();
+        //    if (newEvent == 0) {
+        //        var element = document.createElement("input");
+        //        //Create Labels
+        //        var label = document.createElement("Label");
+        //        label.innerHTML = "Other";
+        //
+        //        //Assign different attributes to the element.
+        //        element.setAttribute("type", "text");
+        //        element.setAttribute("value", "Replace with new event name.");
+        //        element.setAttribute("name", "otherEvent");
+        //        element.setAttribute("style", "width:200px");
+        //
+        //        label.setAttribute("style", "font-weight:normal");
+        //
+        //        // 'foobar' is the div id, where new fields are to be added
+        //        var foo = document.getElementById("#event").parentNode;
+        //
+        //        //Append the element in page (in span).
+        //        foo.appendChild(label);
+        //        foo.appendChild(element);
+        //        var txt = $("#otherEvent").val();
+        //
+        //        var o = new Option(txt, txt);
+        //        /// jquerify the DOM object 'o' so we can use the html method
+        //
+        //        $(o).html(txt);
+        //        $("#selectList").append(o);
+        //    }
+        //
+        //};
         $scope.createAdmin = function ()
         {
             Parse.User.enableRevocableSession();
@@ -107,11 +145,12 @@ app.run([
         {
             var Run = Parse.Object.extend("Run");
             var run = new Run();
-            run.set("name", $("#name").val());
+            var name = $("#name").val().toLowerCase();
+            run.set("name", name);
             run.set("time", $("#time").val());
             run.set("event", $("#event").val());
             run.set("date", $("#datepicker1").val());
-            var username = "";
+            var username = $scope.lookUpUsernameByName(name);
             var User = Parse.Object.extend("_User");
             var query = new Parse.Query(User);
             query.find({
@@ -119,7 +158,7 @@ app.run([
                 {
                     for (var i = 0; i < results.length; i++)
                     {
-                        if ((results[i].get("fname") + " " + results[i].get("lname")).equals($("#name").val()))
+                        if ((results[i].get("fname") + " " + results[i].get("lname")) == ($("#name").val().toLowerCase()))
                         {
                             username = results[i].get("username");
                         }

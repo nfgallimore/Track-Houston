@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
                 var object = results[i];
                 console.log(object.get('time'));
             }
+            res.render('profile', {title: 'Track-Houston'});
             res.send(results);
         },
         error: function (error) {
@@ -40,6 +41,7 @@ router.get('/:user', function(req, res, next) {
                     var object = results[i];
                     console.log(object.get('time'));
                 }
+                res.render('profile', {title: 'Track-Houston'});
                 res.send(results);
             },
             error: function (error) {
@@ -65,5 +67,6 @@ router.get('/:user', function(req, res, next) {
         });
         next();
     }
+
 });
 module.exports = router;

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MongoConfiguration">
+    <option name="serverConfigurations">
+      <list>
+        <ServerConfiguration>
+          <option name="connectOnIdeStartup" value="true" />
+          <option name="label" value="heroku" />
+          <option name="password" value="7j9dcu5i265sf06jlos6s4t7qv" />
+          <option name="serverUrls">
+            <list>
+              <option value="ds051740.mongolab.com:51740" />
+            </list>
+          </option>
+          <option name="sslConnection" value="true" />
+          <option name="userDatabase" value="heroku_nz5n8617" />
+          <option name="userDatabaseAsMySingleDatabase" value="true" />
+          <option name="username" value="heroku_nz5n8617" />
+        </ServerConfiguration>
+      </list>
+    </option>
+  </component>
+</project>
