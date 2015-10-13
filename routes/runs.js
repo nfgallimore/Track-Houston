@@ -32,7 +32,7 @@ router.get('/:user', function(req, res, next) {
     if (id) {
         var Run = Parse.Object.extend("Run");
         var query = new Parse.Query(Run);
-        query.equalTo("user", id);
+        query.equalTo("username", id);
         query.find({
             success: function (results) {
                 // Do something with the returned Parse.Object values
@@ -48,9 +48,9 @@ router.get('/:user', function(req, res, next) {
         });
     }
     else {
-        var Run = Parse.Object.extend("Run");
-        var query = new Parse.Query(Run);
-        query.find({
+        var RunNew = Parse.Object.extend("Run");
+        var queryNew = new Parse.Query(RunNew);
+        queryNew.find({
             success: function (results) {
                 // Do something with the returned Parse.Object values
                 for (var i = 0; i < results.length; i++) {

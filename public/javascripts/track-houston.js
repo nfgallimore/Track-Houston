@@ -2,7 +2,10 @@
  * Created by nickgallimore on 8/24/15.
  */
 
-angular.module('track-houston', []).run(['$rootScope', function ($scope) {
+var app = angular.module('track-houston', []);
+app.run([
+    '$rootScope', function ($scope)
+    {
     Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
     $scope.scenario = 'Log in';
     $scope.currentUser = Parse.User.current();
@@ -278,7 +281,7 @@ angular.module('track-houston', []).run(['$rootScope', function ($scope) {
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
                     (function ($) {
-                        $('#rundata').append('<tr><td><a href=#' + object.get('username') + '>' + object.get('name') + '</a></td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
+                        $('#rundata').append('<tr><td><a nghref=users/' + object.get('username') + '>' + object.get('name') + '</a></td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
                     })(jQuery);
                     var name = object.get('name');
                     var time = object.get('time');
