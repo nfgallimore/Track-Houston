@@ -1,22 +1,23 @@
 extends layout
-div(ng-show='currentUser')
-    #page(data-role='page')
-        div(data-role='header', id='customHeader')
-            h1 Welcome to Track-Houston!
-        div(data-role='tabs')
-            #one.ui-content
-                // admin navigation bar
-                div(ng-hide="!isAdmin" data-role='navbar')
-                    center
-                        ul
-                            li
-                                a(id='ManNoteSetBUTT', href='#runTable', data-theme='a', data-ajax='false') View Data
-                            br
-                            li
-                                a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
-                            br
-                            li
-                                a(id='ManNoteSetBUTT', href='#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
-                            br
-                            li
-                                a(id='ManNoteSetBUTT', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
+block content
+    div(ng-show='currentUser')
+        #page(data-role='page')
+            div(data-role='header', id='customHeader')
+                h1 Welcome to Track-Houston!
+            div(data-role='tabs')
+                #one.ui-content
+                    // admin navigation bar
+                    div(ng-hide="!isAdmin" data-role='navbar')
+                        center
+                            ul
+                                li
+                                    a(id='ManNoteSetBUTT', href='#runTable', data-theme='a', data-ajax='false') View Data
+                                br
+                                li
+                                    a(id='ManNoteSetBUTT', href='#inputRun', data-theme='a', data-ajax='false') Input Times
+                                br
+                                li
+                                    a(id='ManNoteSetBUTT', href='#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
+                                br
+                                li
+                                    a(id='ManNoteSetBUTT', href='#viewGrades', data-theme='a', data-ajax='false') View Grades
