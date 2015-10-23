@@ -391,37 +391,6 @@ app.run([
                 }
             });
         };
-        $scope.createProfileRunTable = function (username)
-        {
-            var Run = Parse.Object.extend("Run");
-            var query = new Parse.Query(Run);
-            query.equalTo("username", username);
-            query.find({
-                success: function (results)
-                {
-                    for (var i = 0; i < results.length; i++)
-                    {
-                        var object = results[i];
-                        (function ($)
-                        {
-                            $('#rundata').append('<tr><td><a href=runs/' + object.get('username') + '>' + object.get('name') + '</a></td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
-                        })(jQuery);
-                        var name = object.get('name');
-                        var time = object.get('time');
-                        var event = object.get('event');
-                        var date = object.get('date');
-                        var obj = {Name: name, Time: time, Event: event, Date: date};
-                        $scope.runs.push(obj);
-                        $scope.runsJSON.push(object.toJSON())
-                    }
-                    console.log($scope.runsJSON);
-                },
-                error: function (error)
-                {
-                    alert("Error: " + error.code + " " + error.message);
-                }
-            });
-        };
         $scope.createGradeTable = function ()
         {
             var Grade = Parse.Object.extend("Grade");
