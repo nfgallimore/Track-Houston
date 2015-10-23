@@ -1,32 +1,34 @@
-// shown when user is logged in
-div(ng-show='currentUser')
-    #page(data-role='page')
-        div(data-role='header', id='customHeader')
-            h1 Welcome to Track-Houston!
-        div(data-role='tabs')
-            #one.ui-content
-                // admin navigation bar
-                div(ng-hide="!isAdmin" data-role='navbar')
-                    center
-                        ul
-                            li
-                                a(id='ManNoteSetBUTT', href='track-houston.herokuapp.com/#runTable', data-theme='a', data-ajax='false') View Data
-                            br
-                            li
-                                a(id='ManNoteSetBUTT', href='track-houston.herokuapp.com/#inputRun', data-theme='a', data-ajax='false') Input Times
-                            br
-                            li
-                                a(id='ManNoteSetBUTT', href='track-houston.herokuapp.com/#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
-                            br
-                            li
-                                a(id='ManNoteSetBUTT', href='track-houston.herokuapp.com/#viewGrades', data-theme='a', data-ajax='false') View Grades
-                #runTable.ui-content
-                    table#rundata.ui-body-d.ui-shadow.table-stripe.ui-responsive.table(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
-                        thead
-                            tr
-                                th Name
-                                th Time
-                                th Event
-                                th Date
-                        tbody
-                            tr
+extends layout
+block content
+    // shown when user is logged in
+    div(ng-show='currentUser')
+        #page(data-role='page')
+            div(data-role='header', id='customHeader')
+                h1 Welcome to Track-Houston!
+            div(data-role='tabs')
+                #one.ui-content
+                    // admin navigation bar
+                    div(ng-hide="!isAdmin" data-role='navbar')
+                        center
+                            ul
+                                li
+                                    a(id='ManNoteSetBUTT', href='track-houston.herokuapp.com/#runTable', data-theme='a', data-ajax='false') View Data
+                                br
+                                li
+                                    a(id='ManNoteSetBUTT', href='track-houston.herokuapp.com/#inputRun', data-theme='a', data-ajax='false') Input Times
+                                br
+                                li
+                                    a(id='ManNoteSetBUTT', href='track-houston.herokuapp.com/#adminCreateAccount', data-theme='a', data-ajax='false') Create Account
+                                br
+                                li
+                                    a(id='ManNoteSetBUTT', href='track-houston.herokuapp.com/#viewGrades', data-theme='a', data-ajax='false') View Grades
+                    #runTable.ui-content
+                        table#rundata.ui-body-d.ui-shadow.table-stripe.ui-responsive.table(data-role='table', data-mode='', data-column-btn-theme='b', data-column-btn-text='Columns to')
+                            thead
+                                tr
+                                    th Name
+                                    th Time
+                                    th Event
+                                    th Date
+                            tbody
+                                tr
