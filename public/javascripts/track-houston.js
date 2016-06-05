@@ -16,6 +16,7 @@ app.run([
         Parse.initialize("sD4tDFzNyuas8Vg0VhoXeF5OSnLHMkJRLxuHOkUL", "ntKIRdfzedSkLFGaj99qrC2lG2VNOXdWIrONcVIP");
         $scope.scenario = 'Log in';
         $scope.currentUser = Parse.User.current();
+
         $scope.createCoachSuccess = null;
         $scope.createStudentSuccess = null;
         $scope.newAcctType = null;
@@ -338,6 +339,7 @@ app.run([
                         var username = $scope.lookUpUsernameByName(name);
                         namesArr.push(name);
                         console.log(name);
+
                         (function ($)
                         {
                             $('#name').append($('<option>', {
