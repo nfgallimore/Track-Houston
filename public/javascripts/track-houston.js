@@ -375,7 +375,7 @@ app.run([
                         var object = results[i];
                         (function ($)
                         {
-                            $('#rundata').append('<tr><td><a href=runs/' + object.get('username') + '>' + object.get('name') + '</a></td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
+                            $('#rundata').append('<tr><td> object.get('name') </td><td>' + object.get('time') + '</td><td>' + object.get('event') + '</td><td>' + object.get('date') + '</td></tr>');
                         })(jQuery);
                         var name = object.get('name');
                         var time = object.get('time');
